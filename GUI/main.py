@@ -90,7 +90,7 @@ quitMenu.add_command(label="Fenster schließen",
 
 # Bild für den Hintergrund öffnen und allen Frames
 # dieses Bild zuweisen
-guiHintergrund = Image.open("images\\GUI_Hintergrund.png")
+guiHintergrund = Image.open("images\GUI_Hintergrund.png")
 guiHintergrundFoto = ImageTk.PhotoImage(guiHintergrund)
 
 for frame in (page1, page2, page3, page4, page5, page6):
