@@ -1,16 +1,18 @@
 # Imports
 import tkinter as tk
 from tkinter import ttk
+from tkinter import messagebox
+from PIL import Image, ImageTk
 import os
 
 
 def showFrame(frame):
     frame.update()
     frame.tkraise()
+
 def helpPage():
     # webbrowser.open_new(LOCALPATH_HS + 'HilfeSeiten.pdf')
     print("Hilfe-Pdf wird in Browser geöffnet")
-
 
 def showAboutText():
     messagebox.showinfo('About', 'Diese Applikation ist im Rahmen einer Bachelorarbeit von Paul Stephan entstanden.\n'
@@ -48,13 +50,12 @@ style.configure("buttonHelp.TButton", font=("Arial", 14, "bold"),
 style.configure("startBild.TLabel", background="black")
 
 # Frames definieren
-page1 = ttk.Frame(root)
-page2 = ttk.Frame(root)
-page3 = ttk.Frame(root)
-page5 = ttk.Frame(root)
-page6 = ttk.Frame(root)
-page7 = ttk.Frame(root)
-page8 = ttk.Frame(root)
+page1 = ttk.Frame(root) # Startseite
+page2 = ttk.Frame(root) # Auswahl Getränk
+page3 = ttk.Frame(root) # Bierglas reinstellen und Lichtschranke schalten und bestätigen
+page4 = ttk.Frame(root) # Colaglas reinstellen und Lichtschranke schalten und bestätigen
+page5 = ttk.Frame(root) # Getränk in Arbeit
+page6 = ttk.Frame(root) # Getränk fertig, Glas entnehmen
 
 # Menuband
 menu = tk.Menu(master=root)
@@ -72,10 +73,6 @@ entwicklerMenu.add_command(label="Page5",
                            command=lambda: showFrame(page5))
 entwicklerMenu.add_command(label="Page6",
                            command=lambda: showFrame(page6))
-entwicklerMenu.add_command(label="Page7",
-                           command=lambda: showFrame(page7))
-entwicklerMenu.add_command(label="Page8",
-                           command=lambda: showFrame(page8))
 
 helpmenu = tk.Menu(menu)
 menu.add_cascade(label="Help", menu=helpmenu)
@@ -93,14 +90,63 @@ quitMenu.add_command(label="Fenster schließen",
 
 # Bild für den Hintergrund öffnen und allen Frames
 # dieses Bild zuweisen
-# guiHintergrund = Image.open(LOCALPATH_HS + "GUI_Hintergrund.png")
-# guiHintergrundFoto = ImageTk.PhotoImage(guiHintergrund)
+guiHintergrund = Image.open("images\\GUI_Hintergrund.png")
+guiHintergrundFoto = ImageTk.PhotoImage(guiHintergrund)
 
-for frame in (page1, page2, page3, page5, page6, page7, page8):
+for frame in (page1, page2, page3, page4, page5, page6):
     frame.place(x=0, y=0, width=1920, height=1060)
-    # label = ttk.Label(frame, image=guiHintergrundFoto, borderwidth=0)
-    # label.place(x=0, y=0)
+    label = ttk.Label(frame, image=guiHintergrundFoto, borderwidth=0)
+    label.place(x=0, y=0)
 
 showFrame(page1)
+
+
+#----------------Page1----------------#
+buttonStart = ttk.Button(page1, text="Start",
+                         command=lambda: showFrame(page2),
+                         style='button.TButton')
+buttonStart.place(x=1360, y=700, width=400, height=200)
+
+
+#----------------Page2----------------#
+buttonBier = ttk.Button(page2, text="Bier",
+                         command=lambda: showFrame(page3),
+                         style='button.TButton')
+buttonBier.place(x=760, y=700, width=400, height=200)
+
+buttonCola = ttk.Button(page2, text="Cola",
+                         command=lambda: showFrame(page4),
+                         style='button.TButton')
+buttonCola.place(x=1360, y=700, width=400, height=200)
+
+
+#----------------Page3----------------#
+buttonStartBier = ttk.Button(page3, text="Bierglas steht drin",
+                         command=lambda: showFrame(page5),
+                         style='button.TButton')
+buttonStartBier.place(x=1360, y=700, width=400, height=200)
+
+
+#----------------Page4----------------#
+buttonStartCola = ttk.Button(page4, text="Colaglas steht drin",
+                         command=lambda: showFrame(page5),
+                         style='button.TButton')
+buttonStartCola.place(x=1360, y=700, width=400, height=200)
+
+
+#----------------Page5----------------#
+buttonNurEntwicklung = ttk.Button(page5, text="nur Entwicklung",
+                         command=lambda: showFrame(page6),
+                         style='button.TButton')
+buttonNurEntwicklung.place(x=1360, y=700, width=400, height=200)
+
+
+#----------------Page6----------------#
+buttonBackToStart = ttk.Button(page6, text="zurück zum Start",
+                         command=lambda: showFrame(page2),
+                         style='button.TButton')
+buttonBackToStart.place(x=1360, y=700, width=400, height=200)
+
+
 
 root.mainloop()
