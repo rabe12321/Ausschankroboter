@@ -23,7 +23,6 @@ def showAboutText():
                                  'Eine für den Roboter ausführbare Datei wird zum Schluss an den Roboter gesendet.\n'
                                  'Bei weiteren Fragen wenden Sie sich an Prof.-Dr. A. Buschhaus.')
 
-
 def closeWindow():
     os.system('cls')
     print('Programm wird nun beendet.\n'
@@ -33,7 +32,7 @@ def closeWindow():
 
 # Hauptfenster
 root = tk.Tk()
-root.title("Automatisiertes Portraitzeichnen")
+root.title("Ausschankroboter")
 root.attributes('-fullscreen', True)
 
 # Style der Widgets konfigurieren
@@ -110,11 +109,22 @@ quitMenu.add_command(label="Fenster schließen",
 guiHintergrund = Image.open("images\GUI_Hintergrund.png")
 guiHintergrundFoto = ImageTk.PhotoImage(guiHintergrund)
 
+tecLogo = Image.open("images\TEC_logo.png")
+tecLogo = tecLogo.resize((400,150))
+tecLogoFoto = ImageTk.PhotoImage(tecLogo)
+
+
+
 for frame in (page1, page2, page3, page4, page5, page6):
     frame.place(x=0, y=0, width=1920, height=1060)
     #label = ttk.Label(frame, image=guiHintergrundFoto, borderwidth=0)
     #label.place(x=0, y=0)
 
+    label = ttk.Label(frame, image=tecLogoFoto, borderwidth=0)
+    label.place(x=30, y=30)
+
+    buttonLightDark = ttk.Button(frame, text="light/dark", command=lambda: change_theme())
+    buttonLightDark.place(x=1790, y=30, width=100, height=40)
 showFrame(page1)
 
 #----------------Page1----------------#
