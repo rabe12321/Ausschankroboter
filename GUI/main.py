@@ -11,6 +11,7 @@ def showFrame(frame):
     frame.tkraise()
 
 def helpPage():
+
     # webbrowser.open_new(LOCALPATH_HS + 'HilfeSeiten.pdf')
     print("Hilfe-Pdf wird in Browser geöffnet")
 
@@ -36,8 +37,21 @@ root.title("Automatisiertes Portraitzeichnen")
 root.attributes('-fullscreen', True)
 
 # Style der Widgets konfigurieren
-style = ttk.Style()
-style.theme_use("clam")
+
+root.tk.call("source", "azure.tcl")
+root.tk.call("set_theme", "light")
+
+# zwischen light und dark theme wechseln
+def change_theme():
+    # NOTE: The theme's real name is azure-<mode>
+    if root.tk.call("ttk::style", "theme", "use") == "azure-dark":
+        # Set light theme
+        root.tk.call("set_theme", "light")
+    else:
+        # Set dark theme
+        root.tk.call("set_theme", "dark")
+
+"""
 style.configure("BW.TLabel", foreground="black",
                 background="#cdcdcd", font=("Arial", 25))
 style.configure("TButton", font=("Arial", 30))
@@ -48,6 +62,7 @@ style.configure("buttonHelp.TButton", font=("Arial", 14, "bold"),
                 foreground="white", background="#797979",
                 relief='raised')
 style.configure("startBild.TLabel", background="black")
+"""
 
 # Frames definieren
 page1 = ttk.Frame(root) # Startseite
@@ -88,6 +103,8 @@ menu.add_cascade(label="Quit", menu=quitMenu)
 quitMenu.add_command(label="Fenster schließen",
                      command=closeWindow)
 
+
+#----------------all Pages------------#
 # Bild für den Hintergrund öffnen und allen Frames
 # dieses Bild zuweisen
 guiHintergrund = Image.open("images\GUI_Hintergrund.png")
@@ -95,11 +112,10 @@ guiHintergrundFoto = ImageTk.PhotoImage(guiHintergrund)
 
 for frame in (page1, page2, page3, page4, page5, page6):
     frame.place(x=0, y=0, width=1920, height=1060)
-    label = ttk.Label(frame, image=guiHintergrundFoto, borderwidth=0)
-    label.place(x=0, y=0)
+    #label = ttk.Label(frame, image=guiHintergrundFoto, borderwidth=0)
+    #label.place(x=0, y=0)
 
 showFrame(page1)
-
 
 #----------------Page1----------------#
 buttonStart = ttk.Button(page1, text="Start",
