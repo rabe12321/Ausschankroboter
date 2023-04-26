@@ -1,27 +1,31 @@
-# Imports
+# %% Imports
 import tkinter as tk
-from tkinter import ttk
+import tkinter.ttk as ttk
 from tkinter import messagebox
 from PIL import Image, ImageTk
 import os
 
+# %% -----------------Farben definieren--------------------------------------------------------------------------------#
+col_Blue = '#%02x%02x%02x' % (1, 105, 196)  # RGB values
+col_Grey = '#%02x%02x%02x' % (200, 200, 200)  # RGB values
+col_GlobalBackground = '#%02x%02x%02x' % (200, 200, 200)  # RGB light grey
 
+
+# %% -----------------Funktionen---------------------------------------------------------------------------------------#
 def showFrame(frame):
     frame.update()
     frame.tkraise()
 
-def helpPage():
 
+def helpPage():  # TODO Help-Page bauen, evtl. pdf o. ä.
     # webbrowser.open_new(LOCALPATH_HS + 'HilfeSeiten.pdf')
     print("Hilfe-Pdf wird in Browser geöffnet")
 
+
 def showAboutText():
-    messagebox.showinfo('About', 'Diese Applikation ist im Rahmen einer Bachelorarbeit von Paul Stephan entstanden.\n'
-                                 'Der Industrieroboter der Firma FANUC wird verwendet, um Portraits zu zeichnen.\n'
-                                 'Eine Kamera nimmt ein Bild auf und am Rechner wird anschließend dieses Bild verarbeitet.\n'
-                                 'Es entsteht ein Kantenbild, aus welchem Koordinatenwerte für den Roboter erstellt werden.\n'
-                                 'Eine für den Roboter ausführbare Datei wird zum Schluss an den Roboter gesendet.\n'
-                                 'Bei weiteren Fragen wenden Sie sich an Prof.-Dr. A. Buschhaus.')
+    messagebox.showinfo('About',
+                        'Bei weiteren Fragen wenden Sie sich an Prof.-Dr. A. Buschhaus.')  # TODO About-Text schreiben
+
 
 def closeWindow():
     os.system('cls')
@@ -30,48 +34,85 @@ def closeWindow():
           ' automatisch.\nDas kann einen Moment dauern...')
     root.destroy()
 
-# Hauptfenster
+
+def disable_event():
+    pass
+
+
+# %% -----------------Hauptfenster erstellen---------------------------------------------------------------------------#
 root = tk.Tk()
 root.title("Ausschankroboter")
 root.attributes('-fullscreen', True)
+root.configure(background=col_GlobalBackground)
 
-# Style der Widgets konfigurieren
 
-root.tk.call("source", "azure.tcl")
-root.tk.call("set_theme", "light")
+# %% -----------------Bilddateien importieren--------------------------------------------------------------------------#
+guiHintergrund = Image.open("images\GUI_Hintergrund.png")
+guiHintergrundFoto = ImageTk.PhotoImage(guiHintergrund)
 
-# zwischen light und dark theme wechseln
-def change_theme():
-    # NOTE: The theme's real name is azure-<mode>
-    if root.tk.call("ttk::style", "theme", "use") == "azure-dark":
-        # Set light theme
-        root.tk.call("set_theme", "light")
-    else:
-        # Set dark theme
-        root.tk.call("set_theme", "dark")
+tecLogo = Image.open("images\\TEC_logo.png")
+tecLogo = tecLogo.resize((400, 150))
+tecLogoFoto = ImageTk.PhotoImage(tecLogo)
 
-"""
-style.configure("BW.TLabel", foreground="black",
-                background="#cdcdcd", font=("Arial", 25))
-style.configure("TButton", font=("Arial", 30))
-style.configure("button.TButton", font=("Arial", 40, "bold"),
-                foreground="white", background="#797979",
+hsrtLogo = Image.open("images\\HSRT_Logo.png")
+hsrtLogo = hsrtLogo.resize((622, 150))
+hsrtLogoFoto = ImageTk.PhotoImage(hsrtLogo)
+
+buttonStart = Image.open("images\\Buttonstart.png")
+buttonStartFoto = ImageTk.PhotoImage(buttonStart)
+
+weizen = Image.open("images\\Weizen.png")
+weizenFoto = ImageTk.PhotoImage(weizen)
+
+cola = Image.open("images\\Cola.png")
+colaFoto = ImageTk.PhotoImage(cola)
+
+
+# %% -----------------Styles konfigurieren-----------------------------------------------------------------------------#
+style = ttk.Style()
+style.theme_use('clam')
+
+# alle Pages Hintergrundfarbe
+style.configure("global_page_style.TFrame",
+                background=col_GlobalBackground)
+
+# Label allgemein
+style.configure("BW.TLabel",
+                foreground="black",
+                background="#cdcdcd",
+                font=("Arial", 25))
+
+# Label Hintergrund wie alle Pages
+style.configure("invisible_label.TLabel",
+                background=col_GlobalBackground)
+
+# Button allgemein
+style.configure("TButton",
+                font=("Arial", 30))
+
+# Start-Button
+style.configure("buttonStart.TButton",
+                font=("Arial", 40, "bold"),
+                foreground="black",
+                background="#797979",
                 relief='raised')
-style.configure("buttonHelp.TButton", font=("Arial", 14, "bold"),
-                foreground="white", background="#797979",
-                relief='raised')
-style.configure("startBild.TLabel", background="black")
-"""
 
-# Frames definieren
-page1 = ttk.Frame(root) # Startseite
-page2 = ttk.Frame(root) # Auswahl Getränk
-page3 = ttk.Frame(root) # Bierglas reinstellen und Lichtschranke schalten und bestätigen
-page4 = ttk.Frame(root) # Colaglas reinstellen und Lichtschranke schalten und bestätigen
-page5 = ttk.Frame(root) # Getränk in Arbeit
-page6 = ttk.Frame(root) # Getränk fertig, Glas entnehmen
 
-# Menuband
+# %% -----------------Pages/Frames erstellen---------------------------------------------------------------------------#
+page1 = ttk.Frame(root)  # Startseite
+page2 = ttk.Frame(root)  # Auswahl Getränk
+page3 = ttk.Frame(root)  # Bierglas reinstellen und Lichtschranke schalten und bestätigen
+
+
+# %% -----------------Popup-Fenster------------------------------------------------------------------------------------#
+def open_popupConfirm():
+    popup_confirm = tk.Toplevel(root)
+    popup_confirm.geometry("750x250")
+    popup_confirm.title("Glas einstellen und Lichtschranke schließen")
+    popup_confirm.protocol("WM_DELETE_WINDOW", disable_event)
+
+
+# %% -----------------Menüband-----------------------------------------------------------------------------------------#
 menu = tk.Menu(master=root)
 root.config(menu=menu)
 
@@ -83,10 +124,6 @@ entwicklerMenu.add_command(label="Page2",
                            command=lambda: showFrame(page2))
 entwicklerMenu.add_command(label="Page3",
                            command=lambda: showFrame(page3))
-entwicklerMenu.add_command(label="Page5",
-                           command=lambda: showFrame(page5))
-entwicklerMenu.add_command(label="Page6",
-                           command=lambda: showFrame(page6))
 
 helpmenu = tk.Menu(menu)
 menu.add_cascade(label="Help", menu=helpmenu)
@@ -103,76 +140,85 @@ quitMenu.add_command(label="Fenster schließen",
                      command=closeWindow)
 
 
-#----------------all Pages------------#
-# Bild für den Hintergrund öffnen und allen Frames
-# dieses Bild zuweisen
-guiHintergrund = Image.open("images\GUI_Hintergrund.png")
-guiHintergrundFoto = ImageTk.PhotoImage(guiHintergrund)
-
-tecLogo = Image.open("images\TEC_logo.png")
-tecLogo = tecLogo.resize((400,150))
-tecLogoFoto = ImageTk.PhotoImage(tecLogo)
-
-
-
-for frame in (page1, page2, page3, page4, page5, page6):
+# %% -----------------all pages----------------------------------------------------------------------------------------#
+for frame in (page1, page2, page3):
     frame.place(x=0, y=0, width=1920, height=1060)
-    #label = ttk.Label(frame, image=guiHintergrundFoto, borderwidth=0)
-    #label.place(x=0, y=0)
+    frame.config(style="global_page_style.TFrame")
 
-    label = ttk.Label(frame, image=tecLogoFoto, borderwidth=0)
-    label.place(x=30, y=30)
+    label = ttk.Label(frame,
+                      image=tecLogoFoto,
+                      borderwidth=0,
+                      style="invisible_label.TLabel")
+    label.place(x=30,
+                y=30)
 
-    buttonLightDark = ttk.Button(frame, text="light/dark", command=lambda: change_theme())
-    buttonLightDark.place(x=1790, y=30, width=100, height=40)
+    label = ttk.Label(frame,
+                      image=hsrtLogoFoto,
+                      borderwidth=0,
+                      style="invisible_label.TLabel")
+    label.place(x=1268, y=30)
+
+    # buttonLightDark = ttk.Button(frame, text="light/dark", command=lambda: change_theme())
+    # buttonLightDark.place(x=1790, y=30, width=100, height=40)
 showFrame(page1)
 
-#----------------Page1----------------#
-buttonStart = ttk.Button(page1, text="Start",
-                         command=lambda: showFrame(page2),
-                         style='button.TButton')
-buttonStart.place(x=1360, y=700, width=400, height=200)
+# %% -----------------page1--------------------------------------------------------------------------------------------#
+Willkommen_label = ttk.Label(page1,
+                             text="Willkommen",
+                             font=(None, 100),
+                             anchor='center',
+                             background=col_Grey,
+                             foreground='white')
+Willkommen_label.place(x=0,
+                       y=390,
+                       width=1920,
+                       height=300)
+
+buttonStart = ttk.Button(page1,
+                         image=buttonStartFoto,
+                         text="Start",
+                         compound='center',
+                         style="buttonStart.TButton",
+                         command=lambda: showFrame(page2))
+buttonStart.place(relx=0.5, y=850, anchor='center')
+
+# %% -----------------page2--------------------------------------------------------------------------------------------#
+labelWeizen = ttk.Label(page2,
+                        image=weizenFoto,
+                        style="invisible_label.TLabel")
+labelWeizen.place(x=30,
+                  y=200)
+
+labelCola = ttk.Label(page2,
+                        image=colaFoto,
+                        style="invisible_label.TLabel")
+labelCola.place(x=300,
+                y=200)
 
 
-#----------------Page2----------------#
-buttonBier = ttk.Button(page2, text="Bier",
-                         command=lambda: showFrame(page3),
-                         style='button.TButton')
-buttonBier.place(x=760, y=700, width=400, height=200)
+buttonBier = ttk.Button(page2,
+                        text="Bier",
+                        command=lambda: [showFrame(page3), open_popupConfirm()],
+                        style='button.TButton')
+buttonBier.place(x=760,
+                 y=700,
+                 width=400,
+                 height=200)
 
-buttonCola = ttk.Button(page2, text="Cola",
-                         command=lambda: showFrame(page4),
-                         style='button.TButton')
-buttonCola.place(x=1360, y=700, width=400, height=200)
+buttonCola = ttk.Button(page2,
+                        text="Cola",
+                        command=lambda: showFrame(page3),
+                        style='button.TButton')
+buttonCola.place(x=1360,
+                 y=700,
+                 width=400,
+                 height=200)
 
-
-#----------------Page3----------------#
+# %% -----------------page3--------------------------------------------------------------------------------------------#
 buttonStartBier = ttk.Button(page3, text="Bierglas steht drin",
-                         command=lambda: showFrame(page5),
-                         style='button.TButton')
+                             command=lambda: showFrame(page3),
+                             style='button.TButton')
 buttonStartBier.place(x=1360, y=700, width=400, height=200)
 
-
-#----------------Page4----------------#
-buttonStartCola = ttk.Button(page4, text="Colaglas steht drin",
-                         command=lambda: showFrame(page5),
-                         style='button.TButton')
-buttonStartCola.place(x=1360, y=700, width=400, height=200)
-
-
-#----------------Page5----------------#
-buttonNurEntwicklung = ttk.Button(page5, text="nur Entwicklung",
-                         command=lambda: showFrame(page6),
-                         style='button.TButton')
-buttonNurEntwicklung.place(x=1360, y=700, width=400, height=200)
-
-
-#----------------Page6----------------#
-buttonBackToStart = ttk.Button(page6, text="zurück zum Start",
-                         command=lambda: showFrame(page2),
-                         style='button.TButton')
-buttonBackToStart.place(x=1360, y=700, width=400, height=200)
-
-
-
+# %% -----------------start mainloop-----------------------------------------------------------------------------------#
 root.mainloop()
