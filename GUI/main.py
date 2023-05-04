@@ -47,7 +47,7 @@ root.attributes('-fullscreen', True)
 root.configure(background=col_GlobalBackground)
 
 # %% -----------------Bilddateien importieren--------------------------------------------------------------------------#
-guiHintergrund = Image.open("images\GUI_Hintergrund.png")
+guiHintergrund = Image.open("C:\\Users\\robo\\PycharmProjects\\Ausschankroboter\\GUI\\images\\GUI_Hintergrund.png") #TODO Dateipfade !
 guiHintergrundFoto = ImageTk.PhotoImage(guiHintergrund)
 
 tecLogo = Image.open("images\\TEC_logo.png")
