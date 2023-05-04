@@ -3,6 +3,7 @@ import tkinter as tk
 import tkinter.ttk as ttk
 from tkinter import messagebox
 from PIL import Image, ImageTk
+from filepath import *
 import os
 
 # %% -----------------Farben definieren--------------------------------------------------------------------------------#
@@ -12,34 +13,6 @@ col_Grey = '#%02x%02x%02x' % (200, 200, 200)  # RGB values
 col_GlobalBackground = '#%02x%02x%02x' % (200, 200, 200)  # RGB light grey
 
 
-# %% -----------------Funktionen---------------------------------------------------------------------------------------#
-def showFrame(frame):
-    frame.update()
-    frame.tkraise()
-
-
-def helpPage():  # TODO Help-Page bauen, evtl. pdf o. ä.
-    # webbrowser.open_new(LOCALPATH_HS + 'HilfeSeiten.pdf')
-    print("Hilfe-Pdf wird in Browser geöffnet")
-
-
-def showAboutText():
-    messagebox.showinfo('About',
-                        'Bei weiteren Fragen wenden Sie sich an Prof.-Dr. A. Buschhaus.')  # TODO About-Text schreiben
-
-
-def closeWindow():
-    os.system('cls')
-    print('Programm wird nun beendet.\n'
-          'Dieses Fenster schließt sich nach erfolgreichem Beenden'
-          ' automatisch.\nDas kann einen Moment dauern...')
-    root.destroy()
-
-
-def disable_event():
-    pass
-
-
 # %% -----------------Hauptfenster erstellen---------------------------------------------------------------------------#
 root = tk.Tk()
 root.title("Ausschankroboter")
@@ -47,24 +20,27 @@ root.attributes('-fullscreen', True)
 root.configure(background=col_GlobalBackground)
 
 # %% -----------------Bilddateien importieren--------------------------------------------------------------------------#
-guiHintergrund = Image.open("C:\\Users\\robo\\PycharmProjects\\Ausschankroboter\\GUI\\images\\GUI_Hintergrund.png") #TODO Dateipfade !
+guiHintergrund = Image.open(FILEPATH + "GUI_Hintergrund.png")
 guiHintergrundFoto = ImageTk.PhotoImage(guiHintergrund)
 
-tecLogo = Image.open("images\\TEC_logo.png")
+tecLogo = Image.open(FILEPATH + "TEC_logo.png")
 tecLogo = tecLogo.resize((400, 150))
 tecLogoFoto = ImageTk.PhotoImage(tecLogo)
 
-hsrtLogo = Image.open("images\\HSRT_Logo.png")
+hsrtLogo = Image.open(FILEPATH + "HSRT_Logo.png")
 hsrtLogo = hsrtLogo.resize((622, 150))
 hsrtLogoFoto = ImageTk.PhotoImage(hsrtLogo)
 
-buttonStart = Image.open("images\\Buttonstart.png")
+buttonStart = Image.open(FILEPATH + "Buttonstart.png")
 buttonStartFoto = ImageTk.PhotoImage(buttonStart)
 
-weizen = Image.open("images\\weizenFrame.png") # TODO copyright?!
+buttonStartPress = Image.open(FILEPATH + "Buttonstart_ausgefüllt.png")
+buttonStartPressFoto = ImageTk.PhotoImage(buttonStartPress)
+
+weizen = Image.open(FILEPATH + "weizenFrame.png") # TODO copyright?!
 weizenFoto = ImageTk.PhotoImage(weizen)
 
-cola = Image.open("images\\colaFrame.png") # TODO copyright?!
+cola = Image.open(FILEPATH + "colaFrame.png") # TODO copyright?!
 colaFoto = ImageTk.PhotoImage(cola)
 
 # %% -----------------Styles konfigurieren-----------------------------------------------------------------------------#
@@ -113,6 +89,44 @@ style.configure("buttonStart.TButton",
 page1 = ttk.Frame(root)  # Startseite
 page2 = ttk.Frame(root)  # Auswahl Getränk
 page3 = ttk.Frame(root)  # Bierglas reinstellen und Lichtschranke schalten und bestätigen
+
+
+# %% -----------------Funktionen---------------------------------------------------------------------------------------#
+def showFrame(frame):
+    frame.update()
+    frame.tkraise()
+
+
+def helpPage():  # TODO Help-Page bauen, evtl. pdf o. ä.
+    # webbrowser.open_new(LOCALPATH_HS + 'HilfeSeiten.pdf')
+    print("Hilfe-Pdf wird in Browser geöffnet")
+
+
+def showAboutText():
+    messagebox.showinfo('About',
+                        'Bei weiteren Fragen wenden Sie sich an Prof.-Dr. A. Buschhaus.')  # TODO About-Text schreiben
+
+
+def closeWindow():
+    os.system('cls')
+    print('Programm wird nun beendet.\n'
+          'Dieses Fenster schließt sich nach erfolgreichem Beenden'
+          ' automatisch.\nDas kann einen Moment dauern...')
+    root.destroy()
+
+
+def disable_event():
+    pass
+
+
+def show_labelStart_press(event):
+    labelStart.config(image=buttonStartPressFoto)
+
+
+def show_labelStart_release(event):
+    labelStart.configure(image=buttonStartFoto)
+
+
 
 
 # %% -----------------Popup-Fenster------------------------------------------------------------------------------------#
@@ -191,6 +205,10 @@ labelStart = ttk.Label(page1, # TODO bind das Label, image ändern wenn Maus dr�
 labelStart.place(relx=0.5,
                  y=850,
                  anchor='center')
+labelStart.bind("<ButtonPress>", show_labelStart_press)
+labelStart.bind("<ButtonRelease>", show_labelStart_release)
+
+
 '''
 buttonStart = ttk.Button(page1,
                          image=buttonStartFoto,
