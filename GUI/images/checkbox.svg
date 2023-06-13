@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.1.2 (b8e25be833, 2022-02-05)"
+   sodipodi:docname="checkbox.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="0.59333835"
+     inkscape:cx="601.6803"
+     inkscape:cy="537.6359"
+     inkscape:window-width="1920"
+     inkscape:window-height="1009"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Ebene 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <circle
+       style="fill:#000000;fill-opacity:0;stroke:#a6a6a6;stroke-width:5.29167;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path881"
+       cx="158.75"
+       cy="66.145836"
+       r="37.041668"
+       inkscape:export-filename="C:\Users\rapha\Documents\StudienunterlagenMCM\2_Mechatronikprojekt\git_repo\GUI\images\Checkbox_unselected.png"
+       inkscape:export-xdpi="32"
+       inkscape:export-ydpi="32" />
+    <circle
+       style="fill:none;fill-opacity:0.545098;stroke:#2f528f;stroke-width:5.29167;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path881-8"
+       cx="66.145836"
+       cy="66.145836"
+       r="37.041664"
+       inkscape:export-filename="C:\Users\rapha\Documents\StudienunterlagenMCM\2_Mechatronikprojekt\git_repo\GUI\images\Checkbox_selected.png"
+       inkscape:export-xdpi="32"
+       inkscape:export-ydpi="32" />
+    <circle
+       style="fill:none;fill-opacity:0;stroke:#2f528f;stroke-width:5.292;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path881-2"
+       cx="66.145836"
+       cy="66.145836"
+       r="17.197916"
+       inkscape:export-filename="C:\Users\rapha\Documents\StudienunterlagenMCM\2_Mechatronikprojekt\git_repo\GUI\images\Checkbox_selected.png"
+       inkscape:export-xdpi="32"
+       inkscape:export-ydpi="32" />
+    <circle
+       style="fill:none;fill-opacity:0.545098;stroke:#4472c4;stroke-width:14.8167;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path881-4"
+       cx="66.145851"
+       cy="66.145851"
+       r="27.053646"
+       inkscape:export-filename="C:\Users\rapha\Documents\StudienunterlagenMCM\2_Mechatronikprojekt\git_repo\GUI\images\Checkbox_selected.png"
+       inkscape:export-xdpi="32"
+       inkscape:export-ydpi="32" />
+    <circle
+       style="fill:#ffffff;fill-opacity:1;stroke:#4472c4;stroke-width:0;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path11981"
+       cx="66.145836"
+       cy="66.145836"
+       r="14.552083"
+       inkscape:export-filename="C:\Users\rapha\Documents\StudienunterlagenMCM\2_Mechatronikprojekt\git_repo\GUI\images\Checkbox_selected.png"
+       inkscape:export-xdpi="32"
+       inkscape:export-ydpi="32" />
+    <circle
+       style="fill:#ffffff;fill-opacity:1;stroke:#4472c4;stroke-width:0;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path11981-0"
+       cx="158.75"
+       cy="66.145836"
+       r="34.395832"
+       inkscape:export-filename="C:\Users\rapha\Documents\StudienunterlagenMCM\2_Mechatronikprojekt\git_repo\GUI\images\Checkbox_unselected.png"
+       inkscape:export-xdpi="32"
+       inkscape:export-ydpi="32" />
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:#2f528f;stroke-width:5.29167;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect12668"
+       width="74.083336"
+       height="74.083336"
+       x="29.104168"
+       y="134.9375"
+       inkscape:export-filename="C:\Users\rapha\Documents\StudienunterlagenMCM\2_Mechatronikprojekt\git_repo\GUI\images\selectbox_selected.png"
+       inkscape:export-xdpi="32"
+       inkscape:export-ydpi="32" />
+    <rect
+       style="fill:#4472c4;fill-opacity:1;stroke:none;stroke-width:0;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect14613"
+       width="68.791664"
+       height="68.791664"
+       x="31.75"
+       y="137.58333"
+       inkscape:export-filename="C:\Users\rapha\Documents\StudienunterlagenMCM\2_Mechatronikprojekt\git_repo\GUI\images\selectbox_selected.png"
+       inkscape:export-xdpi="32"
+       inkscape:export-ydpi="32" />
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:#a6a6a6;stroke-width:5.29167;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect12668-4"
+       width="74.083336"
+       height="74.083336"
+       x="121.70834"
+       y="134.9375"
+       inkscape:export-filename="C:\Users\rapha\Documents\StudienunterlagenMCM\2_Mechatronikprojekt\git_repo\GUI\images\selectbox_unselected.png"
+       inkscape:export-xdpi="32"
+       inkscape:export-ydpi="32" />
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect14613-5"
+       width="68.791664"
+       height="68.791664"
+       x="124.35417"
+       y="137.58333"
+       inkscape:export-filename="C:\Users\rapha\Documents\StudienunterlagenMCM\2_Mechatronikprojekt\git_repo\GUI\images\selectbox_unselected.png"
+       inkscape:export-xdpi="32"
+       inkscape:export-ydpi="32" />
+    <path
+       style="font-variation-settings:normal;opacity:1;fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:5.29167;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;stop-color:#000000;stop-opacity:1"
+       d="m 37.638752,178.05268 19.150819,20.19813 37.641262,-55.20825"
+       id="path18096"
+       inkscape:export-filename="C:\Users\rapha\Documents\StudienunterlagenMCM\2_Mechatronikprojekt\git_repo\GUI\images\selectbox_selected.png"
+       inkscape:export-xdpi="32"
+       inkscape:export-ydpi="32" />
+  </g>
+</svg>
