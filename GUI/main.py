@@ -164,7 +164,7 @@ def cola_select():
     global cola_selected
     cola_selected = True
     if checkbox_weizen.get_selected():
-        checkbox_weizen.click(checkbox_weizen.event_info())
+        checkbox_weizen.click()
 
 
 def cola_unselect():
@@ -176,7 +176,7 @@ def weizen_select():
     global weizen_selected
     weizen_selected = True
     if checkbox_cola.get_selected():
-        checkbox_cola.click(checkbox_cola.event_info())
+        checkbox_cola.click()
 
 
 def weizen_unselect():

@@ -28,7 +28,9 @@ class CheckBox(ttk.Label):
 
         self.bind("<Button-1>", self.click)
 
-    def click(self, event):
+    def click(self, event=""):
+        if event == "":
+            event = self.event_info()
         if self.__is_selected:
             self.unselect(self.__command_unselect)
         else:
@@ -85,7 +87,9 @@ class SelectBox(ttk.Label):
 
         self.bind("<Button-1>", self.click)
 
-    def click(self, event):
+    def click(self, event=""):
+        if event == "":
+            event = self.event_info()
         if self.__is_selected:
             self.unselect(self.__command_unselect)
         else:
