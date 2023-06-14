@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg51395"
+   inkscape:version="1.1.2 (b8e25be833, 2022-02-05)"
+   sodipodi:docname="signalLamp.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview51397"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="0.64052329"
+     inkscape:cx="288.82634"
+     inkscape:cy="666.64243"
+     inkscape:window-width="1920"
+     inkscape:window-height="1009"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs51392">
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient12885">
+      <stop
+         style="stop-color:#ffffff;stop-opacity:1;"
+         offset="0"
+         id="stop12881" />
+      <stop
+         style="stop-color:#ffffff;stop-opacity:0;"
+         offset="1"
+         id="stop12883" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient11421">
+      <stop
+         style="stop-color:#ffffff;stop-opacity:1;"
+         offset="0"
+         id="stop11417" />
+      <stop
+         style="stop-color:#ffffff;stop-opacity:0;"
+         offset="1"
+         id="stop11419" />
+    </linearGradient>
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient11421"
+       id="radialGradient11423"
+       cx="66.145836"
+       cy="66.145836"
+       fx="66.145836"
+       fy="66.145836"
+       r="39.687503"
+       gradientUnits="userSpaceOnUse" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient12885"
+       id="radialGradient12887"
+       cx="66.145836"
+       cy="171.68707"
+       fx="66.145836"
+       fy="171.68707"
+       r="39.687503"
+       gradientUnits="userSpaceOnUse" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient12885"
+       id="radialGradient11423-3"
+       cx="66.558907"
+       cy="278.46573"
+       fx="66.558907"
+       fy="278.46573"
+       r="39.687504"
+       gradientUnits="userSpaceOnUse" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient12885"
+       id="radialGradient11423-7"
+       cx="171.8927"
+       cy="171.8927"
+       fx="171.8927"
+       fy="171.8927"
+       r="39.687504"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(0)" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient12885"
+       id="radialGradient11423-0"
+       cx="171.8927"
+       cy="66.145836"
+       fx="171.8927"
+       fy="66.145836"
+       r="39.687504"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
+  <g
+     inkscape:label="Ebene 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <circle
+       style="fill:#141414;fill-opacity:0.545098;stroke:#a6a6a6;stroke-width:5.29167;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path881-5"
+       cx="66.145836"
+       cy="66.145836"
+       r="37.041668"
+       inkscape:export-filename="C:\Users\rapha\Documents\StudienunterlagenMCM\2_Mechatronikprojekt\git_repo\GUI\images\signalOff.png"
+       inkscape:export-xdpi="64"
+       inkscape:export-ydpi="64" />
+    <circle
+       style="fill:url(#radialGradient11423);fill-opacity:1;stroke:#a6a6a6;stroke-width:5.29167;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;opacity:0.67"
+       id="path881-5-6"
+       inkscape:export-filename="C:\Users\rapha\Documents\StudienunterlagenMCM\2_Mechatronikprojekt\git_repo\GUI\images\signalOff.png"
+       inkscape:export-xdpi="64"
+       inkscape:export-ydpi="64"
+       r="37.041668"
+       cy="66.145836"
+       cx="66.145836" />
+    <circle
+       style="fill:#ff0000;fill-opacity:1;stroke:#a6a6a6;stroke-width:5.29167;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path881"
+       inkscape:export-filename="C:\Users\rapha\Documents\StudienunterlagenMCM\2_Mechatronikprojekt\git_repo\GUI\images\signalRed.png"
+       inkscape:export-xdpi="64.000008"
+       inkscape:export-ydpi="64.000008"
+       r="37.041668"
+       cy="171.97917"
+       cx="66.145836" />
+    <circle
+       style="fill:#00f200;fill-opacity:1;stroke:#a6a6a6;stroke-width:5.29167;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path881-0"
+       inkscape:export-filename="C:\Users\rapha\Documents\StudienunterlagenMCM\2_Mechatronikprojekt\git_repo\GUI\images\signalGreen.png"
+       inkscape:export-xdpi="64.000008"
+       inkscape:export-ydpi="64.000008"
+       r="37.041668"
+       cy="66.145836"
+       cx="171.97917" />
+    <circle
+       style="fill:#ffea00;fill-opacity:1;stroke:#a6a6a6;stroke-width:5.29167;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path881-9"
+       inkscape:export-filename="C:\Users\rapha\Documents\StudienunterlagenMCM\2_Mechatronikprojekt\git_repo\GUI\images\signalYellow.png"
+       inkscape:export-xdpi="64.000008"
+       inkscape:export-ydpi="64.000008"
+       r="37.041668"
+       cy="171.97917"
+       cx="171.97917" />
+    <circle
+       style="fill:#2c2fff;fill-opacity:1;stroke:#a6a6a6;stroke-width:5.29167;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path881-16"
+       inkscape:export-filename="C:\Users\rapha\Documents\StudienunterlagenMCM\2_Mechatronikprojekt\git_repo\GUI\images\Checkbox_unselected.png"
+       inkscape:export-xdpi="32"
+       inkscape:export-ydpi="32"
+       r="37.041668"
+       cy="277.8125"
+       cx="66.092918" />
+    <circle
+       style="opacity:0.81602374;fill:url(#radialGradient12887);fill-opacity:1;stroke:#a6a6a6;stroke-width:5.29167;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path881-5-6-0"
+       inkscape:export-filename="C:\Users\rapha\Documents\StudienunterlagenMCM\2_Mechatronikprojekt\git_repo\GUI\images\signalRed.png"
+       inkscape:export-xdpi="64.000008"
+       inkscape:export-ydpi="64.000008"
+       r="37.041668"
+       cy="171.97917"
+       cx="66.145836" />
+    <circle
+       style="opacity:0.63204748;fill:url(#radialGradient11423-3);fill-opacity:1;stroke:#a6a6a6;stroke-width:5.29167;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path881-5-6-2"
+       inkscape:export-filename="C:\Users\rapha\Documents\StudienunterlagenMCM\2_Mechatronikprojekt\git_repo\GUI\images\signalBlue.png"
+       inkscape:export-xdpi="64"
+       inkscape:export-ydpi="64"
+       r="37.041668"
+       cy="277.8125"
+       cx="66.145836" />
+    <circle
+       style="opacity:1;fill:url(#radialGradient11423-7);fill-opacity:1;stroke:#a6a6a6;stroke-width:5.29167;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path881-5-6-9"
+       inkscape:export-filename="C:\Users\rapha\Documents\StudienunterlagenMCM\2_Mechatronikprojekt\git_repo\GUI\images\signalYellow.png"
+       inkscape:export-xdpi="64.000008"
+       inkscape:export-ydpi="64.000008"
+       r="37.041668"
+       cy="171.97917"
+       cx="171.97917" />
+    <circle
+       style="opacity:0.87833828;fill:url(#radialGradient11423-0);fill-opacity:1;stroke:#a6a6a6;stroke-width:5.29167;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path881-5-6-1"
+       inkscape:export-filename="C:\Users\rapha\Documents\StudienunterlagenMCM\2_Mechatronikprojekt\git_repo\GUI\images\signalGreen.png"
+       inkscape:export-xdpi="64.000008"
+       inkscape:export-ydpi="64.000008"
+       r="37.041668"
+       cy="66.145836"
+       cx="171.97917" />
+  </g>
+</svg>
