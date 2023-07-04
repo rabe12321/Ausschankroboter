@@ -79,7 +79,7 @@ style = ttk.Style()
 # style.theme_use('clam')
 
 # ttk azure theme anwenden: für grundlegendes Design, danach individuelle Anpassungen
-root.tk.call("source", FILEPATH + "..\\azure.tcl")
+root.tk.call("source", "azure.tcl")
 root.tk.call("set_theme", "light")
 
 # alle Pages Hintergrundfarbe
