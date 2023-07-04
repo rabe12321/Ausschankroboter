@@ -7,6 +7,7 @@ import os
 import gui_elements as gui
 from threading import Thread
 import time
+from tkPDFViewer2 import tkPDFViewer as pdf
 import sys
 
 from filepath import FILEPATH
@@ -28,11 +29,11 @@ guiHintergrund = Image.open(FILEPATH + "GUI_Hintergrund.png")
 guiHintergrundFoto = ImageTk.PhotoImage(guiHintergrund)
 
 tecLogo = Image.open(FILEPATH + "TEC_logo.png")
-tecLogo = tecLogo.resize((400, 150))
+tecLogo = tecLogo.resize((300, 113))
 tecLogoFoto = ImageTk.PhotoImage(tecLogo)
 
 hsrtLogo = Image.open(FILEPATH + "HSRT_Logo.png")
-hsrtLogo = hsrtLogo.resize((622, 150))
+hsrtLogo = hsrtLogo.resize((467, 113))
 hsrtLogoFoto = ImageTk.PhotoImage(hsrtLogo)
 
 buttonStart = Image.open(FILEPATH + "Buttonstart.png")
@@ -118,8 +119,7 @@ styleButtonStart.configure("buttonStart.TButton",
 
 # %% -----------------Pages/Frames erstellen---------------------------------------------------------------------------#
 page1 = ttk.Frame(root)  # Startseite
-page2 = ttk.Frame(root)  # Auswahl Getränk
-page3 = ttk.Frame(root)  # Bierglas reinstellen und Lichtschranke schalten und bestätigen
+page2 = ttk.Frame(root)  # Auswahl Getränk, Bestellung, Status
 
 # %% -----------------Globale Variablen---------------------------------------------------------------------------------#
 cola_selected = False
@@ -129,6 +129,8 @@ bestellung_aufgegeben = False
 
 blinker_value = False
 blinker_lamps = []
+
+
 # %% -----------------Funktionen---------------------------------------------------------------------------------------#
 def blinker():
     global blinker_value
@@ -141,11 +143,21 @@ def blinker():
                 blinker_lamp.reset()
         time.sleep(0.5)
 
+
 def handle_gpio():
     while 1:
-        #TODO write outputs to and read inputs from Raspberry Pi
-        print("ich bin der GPIO Handler")
-        time.sleep(1)
+        pass
+        # OUT
+        # cola_selected
+        # weizen_selected
+        # ...
+        # IN
+        # lichtschranke
+        # ausschank läuft
+        # ausschank fertig
+        # ...
+        # TODO write outputs to and read inputs from Raspberry Pi
+
 
 def show_frame(frame):
     frame.update()
@@ -188,11 +200,13 @@ def cola_select():
     if checkbox_weizen.get_selected():
         checkbox_weizen.click()
     show_frame(glasPosBoxFrame)
+    lamp_1.set()
 
 
 def cola_unselect():
     global cola_selected
     cola_selected = False
+    lamp_1.reset()
     show_frame(glasPosBoxHideFrame)
     if selectbox_glas.get_selected():
         selectbox_glas.click()
@@ -204,11 +218,13 @@ def weizen_select():
     if checkbox_cola.get_selected():
         checkbox_cola.click()
     show_frame(glasPosBoxFrame)
+    lamp_1.set()
 
 
 def weizen_unselect():
     global weizen_selected
     weizen_selected = False
+    lamp_1.reset()
     show_frame(glasPosBoxHideFrame)
     if selectbox_glas.get_selected():
         selectbox_glas.click()
@@ -218,6 +234,7 @@ def glas_select():
     global glas_pos_selected
     glas_pos_selected = True
     show_frame(button_bestellen)
+    lamp_2.set()
 
 
 def glas_unselect():
@@ -225,6 +242,7 @@ def glas_unselect():
     glas_pos_selected = False
     print(glas_pos_selected)
     show_frame(button_bestellen_hide)
+    lamp_2.reset()
 
 
 def bestellen_press():
@@ -240,23 +258,24 @@ def bestellen_press():
         checkbox_cola.click()
     if checkbox_weizen.get_selected():
         checkbox_weizen.click()
+    lamp_1.set()
+    lamp_2.set()
+    lamp_3.set()
+    blinker_lamps.append(lamp_4)
 
-"""
-def toggle_glaspos_selected(event):
-    global glas_pos_selected
-    glas_pos_selected = not glas_pos_selected
-    if glas_pos_selected:
-        selectBoxGlas.config(image=selectboxSelectedFoto)
-    else:
-        selectBoxGlas.config(image=selectboxUnselectedFoto)
-"""
 
 # %% -----------------Popup-Fenster------------------------------------------------------------------------------------#
-def open_popupConfirm():
-    popup_confirm = tk.Toplevel(root)
-    popup_confirm.geometry("750x250")
-    popup_confirm.title("Glas einstellen und Lichtschranke schließen")
-    popup_confirm.protocol("WM_DELETE_WINDOW", disable_event)
+def open_popupHelp():
+    return
+    popup_help = tk.Toplevel(root)
+    popup_help.geometry("1000x1000")
+    popup_help.title("Hilfe")
+    pdf_page = pdf.ShowPdf()
+    help_page = pdf_page.pdf_view(popup_help,
+                                  height=1000,
+                                  width=1000,
+                                  pdf_location="help.pdf")
+    help_page.pack(anchor="center")
 
 
 # %% -----------------Menüband-----------------------------------------------------------------------------------------#
@@ -264,17 +283,15 @@ menu = tk.Menu(master=root)
 root.config(menu=menu)
 
 entwicklerMenu = tk.Menu(menu)
-menu.add_cascade(label="Entwickleroptionen", menu=entwicklerMenu)
+menu.add_cascade(label="Go to", menu=entwicklerMenu)
 entwicklerMenu.add_command(label="Page1",
                            command=lambda: show_frame(page1))
 entwicklerMenu.add_command(label="Page2",
                            command=lambda: show_frame(page2))
-entwicklerMenu.add_command(label="Page3",
-                           command=lambda: show_frame(page3))
 
 helpmenu = tk.Menu(menu)
 menu.add_cascade(label="Help", menu=helpmenu)
-helpmenu.add_command(label="Hilfeseite öffnen", command=helpPage)
+helpmenu.add_command(label="Hilfeseite öffnen", command=open_popupHelp)
 
 aboutMenu = tk.Menu(menu)
 menu.add_cascade(label="About", menu=aboutMenu)
@@ -287,7 +304,7 @@ quitMenu.add_command(label="Fenster schließen",
                      command=closeWindow)
 
 # %% -----------------all pages----------------------------------------------------------------------------------------#
-for frame in (page1, page2, page3):
+for frame in (page1, page2):
     frame.place(x=0, y=0, width=1920, height=1060)
     frame.config(style="global_page_style.TFrame")
 
@@ -302,8 +319,16 @@ for frame in (page1, page2, page3):
                       image=hsrtLogoFoto,
                       borderwidth=0,
                       style="invisible_label.TLabel")
-    label.place(x=1268,
+    label.place(x=1423,
                 y=30)
+
+    label = ttk.Label(frame,
+                      text="Ausschankroboter",
+                      style="invisible_label.TLabel",
+                      font=('Arial', 50),
+                      anchor='n')
+    label.place(x=590,
+                y=50)
 
 show_frame(page1)
 
@@ -342,7 +367,6 @@ buttonStart.place(relx=0.5,
                   y=850,
                   anchor='center')
 
-
 # %% -----------------page2--------------------------------------------------------------------------------------------#
 labelWeizen = ttk.Label(page2, image=weizenFoto, style="invisible_label.TLabel")
 labelWeizen.place(x=30, y=240)
@@ -374,47 +398,42 @@ button_bestellen.place(x=680, y=870)
 button_bestellen_hide = ttk.Label(page2, image=bestellenButtonHideFoto, style="invisible_label.TLabel")
 button_bestellen_hide.place(x=680, y=870)
 
-
 statusFrame = ttk.Label(page2, image=statusFrameFoto, style="invisible_label.TLabel")
 statusFrame.place(x=1300, y=240)
 
-lamp_lichtschranke = gui.SignalLamp(statusFrame, 100, 100, "invisible_label.TLabel")
-lamp_lichtschranke.place(x=460, y=30)
-lamp_lichtschranke.config_red()
-lamp_lichtschranke.set()
+label_1 = ttk.Label(statusFrame, style="invisible_label.TLabel", text="Getränk ausgewählt", font=("Arial", 30))
+label_1.place(anchor="e", x=430, y=70)
+lamp_1 = gui.SignalLamp(statusFrame, 100, 100, "invisible_label.TLabel")
+lamp_1.place(anchor="w", x=460, y=70)
+lamp_1.config_green()
 
+label_2 = ttk.Label(statusFrame, style="invisible_label.TLabel", text="Glas positioniert", font=("Arial", 30))
+label_2.place(anchor="e", x=430, y=200)
 lamp_2 = gui.SignalLamp(statusFrame, 100, 100, "invisible_label.TLabel")
-lamp_2.place(x=460, y=160)
-lamp_2.config_blue()
-blinker_lamps.append(lamp_2)
+lamp_2.place(anchor="w", x=460, y=200)
+lamp_2.config_green()
 
+label_3 = ttk.Label(statusFrame, style="invisible_label.TLabel", text="Getränk bestellt", font=("Arial", 30))
+label_3.place(anchor="e", x=430, y=330)
 lamp_3 = gui.SignalLamp(statusFrame, 100, 100, "invisible_label.TLabel")
-lamp_3.place(x=460, y=290)
+lamp_3.place(anchor="w", x=460, y=330)
 lamp_3.config_green()
-lamp_3.set()
 
+label_4 = ttk.Label(statusFrame, style="invisible_label.TLabel", text="Ausschank läuft", font=("Arial", 30))
+label_4.place(anchor="e", x=430, y=460)
 lamp_4 = gui.SignalLamp(statusFrame, 100, 100, "invisible_label.TLabel")
-lamp_4.place(x=460, y=420)
+lamp_4.place(anchor="w", x=460, y=460)
 lamp_4.config_yellow()
-blinker_lamps.append(lamp_4)
 
+label_5 = ttk.Label(statusFrame, style="invisible_label.TLabel", text="Lichtschranke offen", font=("Arial", 30))
+label_5.place(anchor="e", x=430, y=590)
+lamp_5 = gui.SignalLamp(statusFrame, 100, 100, "invisible_label.TLabel")
+lamp_5.place(anchor="w", x=460, y=590)
+lamp_5.config_red()
 
-
-"""
-blinker_lamps.append(lichtschranke_status)
-blinker_lamps.remove(lichtschranke_status)
-lichtschranke_status.set()
-"""
-
-
-# %% -----------------page3--------------------------------------------------------------------------------------------#
-buttonStartBier = ttk.Button(page3, text="Bierglas steht drin",
-                             command=lambda: show_frame(page3),
-                             style='button.TButton')
-buttonStartBier.place(x=1360,
-                      y=700,
-                      width=400,
-                      height=200)
+lamp_6 = gui.SignalLamp(statusFrame, 100, 100, "invisible_label.TLabel")
+lamp_6.place(anchor="w", x=460, y=720)
+lamp_6.config_red()
 
 # %% -----------------start mainloop-----------------------------------------------------------------------------------#
 thread_blinker = Thread(target=blinker)
