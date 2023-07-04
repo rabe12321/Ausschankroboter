@@ -10,7 +10,7 @@ import time
 from tkPDFViewer2 import tkPDFViewer as pdf
 import sys
 
-from filepath import FILEPATH
+from filepath import *
 
 # %% -----------------Farben definieren--------------------------------------------------------------------------------#
 # col_Blue = '#%02x%02x%02x' % (1, 105, 196)  # RGB values
@@ -79,7 +79,7 @@ style = ttk.Style()
 # style.theme_use('clam')
 
 # ttk azure theme anwenden: für grundlegendes Design, danach individuelle Anpassungen
-root.tk.call("source", "azure.tcl")
+root.tk.call("source", FILEPATH_STYLE)
 root.tk.call("set_theme", "light")
 
 # alle Pages Hintergrundfarbe
