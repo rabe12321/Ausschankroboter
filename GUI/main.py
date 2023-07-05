@@ -8,6 +8,7 @@ import gui_elements as gui
 from threading import Thread
 import time
 from tkPDFViewer2 import tkPDFViewer as pdf
+import RPi.GPIO as GPIO
 import sys
 
 from filepath import *
@@ -130,6 +131,15 @@ bestellung_aufgegeben = False
 blinker_value = False
 blinker_lamps = []
 
+doBier = 6
+doCola = 13
+do3 = 19
+do4 = 26
+di1 = 12
+di2 = 16
+di3 = 20
+di4 = 21
+
 
 # %% -----------------Funktionen---------------------------------------------------------------------------------------#
 def blinker():
@@ -145,8 +155,27 @@ def blinker():
 
 
 def handle_gpio():
+    # init GPIOs
+
+    GPIO.setmode(GPIO.BCM)
+    GPIO.setup(doBier, GPIO.OUT)
+    GPIO.setup(doCola, GPIO.OUT)
+    GPIO.setup(do3, GPIO.OUT)
+    GPIO.setup(do4, GPIO.OUT)
+    GPIO.setup(di1, GPIO.IN)
+    GPIO.setup(di2, GPIO.IN)
+    GPIO.setup(di3, GPIO.IN)
+    GPIO.setup(di4, GPIO.IN)
+
+    GPIO.output(doBier, GPIO.HIGH)
+    GPIO.output(doCola, GPIO.HIGH)
+    GPIO.output(do3, GPIO.HIGH)
+    GPIO.output(do4, GPIO.HIGH)
+
+
+
     while 1:
-        pass
+        time.sleep(0.2)
         # OUT
         # cola_selected
         # weizen_selected
@@ -180,6 +209,7 @@ def closeWindow():
           'Dieses Fenster schließt sich nach erfolgreichem Beenden'
           ' automatisch.\nDas kann einen Moment dauern...')
     root.destroy()
+    GPIO.cleanpu() # GPIO-Instanzen aufräumen
 
 
 def disable_event():
@@ -256,12 +286,17 @@ def bestellen_press():
         selectbox_glas.click()
     if checkbox_cola.get_selected():
         checkbox_cola.click()
+        GPIO.output(doCola, GPIO.LOW)
     if checkbox_weizen.get_selected():
         checkbox_weizen.click()
+        GPIO.output(doBier, GPIO.LOW)
     lamp_1.set()
     lamp_2.set()
     lamp_3.set()
     blinker_lamps.append(lamp_4)
+    time.sleep(0.5)
+    GPIO.output(doCola, GPIO.HIGH)
+    GPIO.output(doBier, GPIO.HIGH)
 
 
 # %% -----------------Popup-Fenster------------------------------------------------------------------------------------#
