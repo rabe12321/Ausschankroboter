@@ -122,7 +122,7 @@ styleButtonStart.configure("buttonStart.TButton",
 page1 = ttk.Frame(root)  # Startseite
 page2 = ttk.Frame(root)  # Auswahl Getränk, Bestellung, Status
 
-# %% -----------------Globale Variablen---------------------------------------------------------------------------------#
+# %% -----------------Globale Variablen--------------------------------------------------------------------------------#
 cola_selected = False
 weizen_selected = False
 glas_pos_selected = False
@@ -138,7 +138,7 @@ do4 = 26
 di1 = 12
 di2 = 16
 di3 = 20
-di4 = 21
+diLichtschranke = 21
 
 
 # %% -----------------Funktionen---------------------------------------------------------------------------------------#
@@ -165,7 +165,7 @@ def handle_gpio():
     GPIO.setup(di1, GPIO.IN)
     GPIO.setup(di2, GPIO.IN)
     GPIO.setup(di3, GPIO.IN)
-    GPIO.setup(di4, GPIO.IN)
+    GPIO.setup(diLichtschranke, GPIO.IN)
 
     GPIO.output(doBier, GPIO.HIGH)
     GPIO.output(doCola, GPIO.HIGH)
@@ -176,10 +176,15 @@ def handle_gpio():
 
     while 1:
         time.sleep(0.2)
+        if GPIO.input(diLichtschranke):
+            lamp_5.set()
+        else:
+            lamp_5.reset()
+
         print("di1:   " + str(GPIO.input(di1)))
         print("di2:   " + str(GPIO.input(di2)))
         print("di3:   " + str(GPIO.input(di3)))
-        print("di4:   " + str(GPIO.input(di4)))
+        print("di4:   " + str(GPIO.input(diLichtschranke)))
         print("-----------------------------------------------------------")
         # OUT
         # cola_selected
