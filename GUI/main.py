@@ -176,6 +176,10 @@ def handle_gpio():
 
     while 1:
         time.sleep(0.2)
+        print("di1" + GPIO.input(di1))
+        print("di1" + GPIO.input(di2))
+        print("di1" + GPIO.input(di3))
+        print("di1" + GPIO.input(di4))
         # OUT
         # cola_selected
         # weizen_selected
