@@ -134,7 +134,7 @@ blinker_lamps = []
 doBier = 6
 doCola = 13
 do3 = 19
-doLED = 26
+do4 = 26
 di1 = 12
 di2 = 16
 di3 = 20
@@ -161,7 +161,7 @@ def handle_gpio():
     GPIO.setup(doBier, GPIO.OUT)
     GPIO.setup(doCola, GPIO.OUT)
     GPIO.setup(do3, GPIO.OUT)
-    GPIO.setup(doLED, GPIO.OUT)
+    GPIO.setup(do4, GPIO.OUT)
     GPIO.setup(di1, GPIO.IN)
     GPIO.setup(di2, GPIO.IN)
     GPIO.setup(di3, GPIO.IN)
@@ -170,7 +170,7 @@ def handle_gpio():
     GPIO.output(doBier, GPIO.HIGH)
     GPIO.output(doCola, GPIO.HIGH)
     GPIO.output(do3, GPIO.HIGH)
-    GPIO.output(doLED, GPIO.HIGH)
+    GPIO.output(do4, GPIO.HIGH)
 
 
 
@@ -178,10 +178,8 @@ def handle_gpio():
         time.sleep(0.2)
         if GPIO.input(diLichtschranke):
             lamp_5.set()
-            GPIO.output(doLED, GPIO.LOW)
         else:
             lamp_5.reset()
-            GPIO.output(doLED, GPIO.HIGH)
 
         print("di1:   " + str(GPIO.input(di1)))
         print("di2:   " + str(GPIO.input(di2)))
