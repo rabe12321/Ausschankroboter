@@ -178,10 +178,10 @@ def handle_gpio():
         time.sleep(0.2)
         if GPIO.input(diLichtschranke):
             lamp_5.set()
-            GPIO.output(doLED, GPIO.HIGH)
+            GPIO.output(doLED, GPIO.LOW)
         else:
             lamp_5.reset()
-            GPIO.output(doLED, GPIO.LOW)
+            GPIO.output(doLED, GPIO.HIGH)
 
         print("di1:   " + str(GPIO.input(di1)))
         print("di2:   " + str(GPIO.input(di2)))
