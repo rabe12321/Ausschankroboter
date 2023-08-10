@@ -215,9 +215,6 @@ def show_Page1():
     weizen_unselect()
     glas_unselect()
     bestellung_aufgegeben = False
-    cola_selected = False
-    weizen_selected = False
-    glas_pos_selected = False
     blinker_lamps.remove(lamp_4)
     GPIO.output(doCola, GPIO.HIGH) # reset GPIO
     GPIO.output(doBier, GPIO.HIGH) # reset GPIO
@@ -360,9 +357,9 @@ root.config(menu=menu)
 entwicklerMenu = tk.Menu(menu)
 menu.add_cascade(label="Go to", menu=entwicklerMenu)
 entwicklerMenu.add_command(label="Page1",
-                           command=lambda: show_frame(page1))
-entwicklerMenu.add_command(label="Page2",
                            command=lambda: show_Page1())
+entwicklerMenu.add_command(label="Page2",
+                           command=lambda: show_frame(page1))
 
 helpmenu = tk.Menu(menu)
 menu.add_cascade(label="Help", menu=helpmenu)
