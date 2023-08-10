@@ -168,6 +168,53 @@ class BestellenButton(ttk.Label):
         self.__button_pressed = self.__button_pressed.resize((size_x, size_y))
         self.__button_pressed_foto = ImageTk.PhotoImage(self.__button_pressed)
 
+class FertigButton(ttk.Label):
+    def __init__(self, frame, size_x, size_y, style, command_press, command_release):
+        self.__button = Image.open(FILEPATH + "bestellenButton.png")
+        self.__button = self.__button.resize((size_x, size_y))
+        self.__button_foto = ImageTk.PhotoImage(self.__button)
+
+        self.__button_pressed = Image.open(FILEPATH + "bestellenButtonPressed.png")
+        self.__button_pressed = self.__button_pressed.resize((size_x, size_y))
+        self.__button_pressed_foto = ImageTk.PhotoImage(self.__button_pressed)
+
+        self.__command_press = command_press
+        self.__command_release = command_release
+
+
+        super(FertigButton, self).__init__(frame, image=self.__button_foto, style=style)
+
+        self.__is_pressed = False
+
+        self.bind("<ButtonPress-1>", self.press)
+        self.bind("<ButtonRelease-1>", self.release)
+
+    def press(self, event=""):
+        if event == "":
+            event = self.event_info()
+        self.config(image=self.__button_pressed_foto)
+        if self.__command_press is None:
+            pass
+        else:
+            self.__command_press()
+        self.__is_pressed = True
+
+    def release(self, event=""):
+        if event == "":
+            event = self.event_info()
+        self.config(image=self.__button_foto)
+        if self.__command_release is None:
+            pass
+        else:
+            self.__command_release()
+        self.__is_pressed = False
+
+    def resize(self, size_x, size_y):
+        self.__button = self.__button.resize((size_x, size_y))
+        self.__button_foto = ImageTk.PhotoImage(self.__button)
+        self.__button_pressed = self.__button_pressed.resize((size_x, size_y))
+        self.__button_pressed_foto = ImageTk.PhotoImage(self.__button_pressed)
+
 
 class SignalLamp(ttk.Label):
 

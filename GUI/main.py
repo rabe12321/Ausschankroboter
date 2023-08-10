@@ -4,6 +4,8 @@ import tkinter.ttk as ttk
 from tkinter import messagebox
 from PIL import Image, ImageTk
 import os
+
+import gui_elements
 import gui_elements as gui
 from threading import Thread
 import time
@@ -137,7 +139,7 @@ do3 = 19
 do4 = 26
 di1 = 12
 di2 = 16
-di3 = 20
+diAusschankAktiv = 20
 diLichtschranke = 21
 
 
@@ -164,7 +166,7 @@ def handle_gpio():
     GPIO.setup(do4, GPIO.OUT)
     GPIO.setup(di1, GPIO.IN)
     GPIO.setup(di2, GPIO.IN)
-    GPIO.setup(di3, GPIO.IN)
+    GPIO.setup(diAusschankAktiv, GPIO.IN)
     GPIO.setup(diLichtschranke, GPIO.IN)
 
     GPIO.output(doBier, GPIO.HIGH)
@@ -201,6 +203,22 @@ def handle_gpio():
 def show_frame(frame):
     frame.update()
     frame.tkraise()
+
+
+def show_Page():
+    global cola_selected
+    global weizen_selected
+    global glas_pos_selected
+    global bestellung_aufgegeben
+
+    page1.update()
+    page1.tkraise()
+    cola_selected = False
+    weizen_selected = False
+    glas_pos_selected = False
+    bestellung_aufgegeben = False
+    GPIO.output(doCola, GPIO.HIGH) # reset GPIO
+    GPIO.output(doBier, GPIO.HIGH) # reset GPIO
 
 
 def helpPage():  # TODO Help-Page bauen, evtl. pdf o. ä.
@@ -307,6 +325,10 @@ def bestellen_press():
     time.sleep(0.5)
     GPIO.output(doCola, GPIO.HIGH) # reset GPIO
     GPIO.output(doBier, GPIO.HIGH) # reset GPIO
+    while GPIO.input(diAusschankAktiv):
+        pass
+
+
 
 
 # %% -----------------Popup-Fenster------------------------------------------------------------------------------------#
@@ -321,6 +343,14 @@ def open_popupHelp():
                                   width=1000,
                                   pdf_location="help.pdf")
     help_page.pack(anchor="center")
+
+def open_popupFertig():
+    return
+    popup_fertig = tk.Toplevel(root)
+    popup_fertig.geometry("1000x1000")
+    popup_fertig.title("Ausschankvorgang abgeschlossen")
+    popup_fertig.pack(anchor="center")
+    fertigButton = gui_elements.FertigButton(popup_fertig,200,200,"invisible_label.TLabel",None,None)
 
 
 # %% -----------------Menüband-----------------------------------------------------------------------------------------#
@@ -411,7 +441,7 @@ buttonStart = ttk.Button(page1,
 buttonStart.place(relx=0.5,
                   y=850,
                   anchor='center')
-
+open_popupFertig()
 # %% -----------------page2--------------------------------------------------------------------------------------------#
 labelWeizen = ttk.Label(page2, image=weizenFoto, style="invisible_label.TLabel")
 labelWeizen.place(x=30, y=240)
