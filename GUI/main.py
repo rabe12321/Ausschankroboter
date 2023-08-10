@@ -205,7 +205,7 @@ def show_frame(frame):
     frame.tkraise()
 
 
-def show_Page():
+def show_Page1():
     global cola_selected
     global weizen_selected
     global glas_pos_selected
@@ -358,7 +358,7 @@ menu.add_cascade(label="Go to", menu=entwicklerMenu)
 entwicklerMenu.add_command(label="Page1",
                            command=lambda: show_frame(page1))
 entwicklerMenu.add_command(label="Page2",
-                           command=lambda: show_frame(page2))
+                           command=lambda: show_Page1())
 
 helpmenu = tk.Menu(menu)
 menu.add_cascade(label="Help", menu=helpmenu)
