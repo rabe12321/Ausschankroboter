@@ -220,12 +220,10 @@ def show_Page1():
     lamp_3.reset()
     GPIO.output(doCola, GPIO.HIGH) # reset GPIO
     GPIO.output(doBier, GPIO.HIGH) # reset GPIO
-    show_frame(glasPosBoxFrame)
     show_frame(labelCola)
     show_frame(checkbox_cola)
     show_frame(labelWeizen)
     show_frame(checkbox_weizen)
-    show_frame(button_bestellen)
     page1.update()
     page1.tkraise()
 
