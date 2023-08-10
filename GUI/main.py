@@ -213,9 +213,9 @@ def show_Page1():
 
     page1.update()
     page1.tkraise()
-    cola_selected = False
-    weizen_selected = False
-    glas_pos_selected = False
+    cola_unselect()
+    weizen_unselect()
+    glas_unselect()
     bestellung_aufgegeben = False
     GPIO.output(doCola, GPIO.HIGH) # reset GPIO
     GPIO.output(doBier, GPIO.HIGH) # reset GPIO
