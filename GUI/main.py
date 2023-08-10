@@ -216,6 +216,7 @@ def show_Page1():
     glas_unselect()
     bestellung_aufgegeben = False
     blinker_lamps.remove(lamp_4)
+    lamp_4.reset()
     lamp_3.reset()
     GPIO.output(doCola, GPIO.HIGH) # reset GPIO
     GPIO.output(doBier, GPIO.HIGH) # reset GPIO
