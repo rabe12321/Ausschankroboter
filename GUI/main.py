@@ -211,14 +211,14 @@ def show_Page1():
     global glas_pos_selected
     global bestellung_aufgegeben
 
-    page1.update()
-    page1.tkraise()
     cola_unselect()
     weizen_unselect()
     glas_unselect()
     bestellung_aufgegeben = False
     GPIO.output(doCola, GPIO.HIGH) # reset GPIO
     GPIO.output(doBier, GPIO.HIGH) # reset GPIO
+    page1.update()
+    page1.tkraise()
 
 
 def helpPage():  # TODO Help-Page bauen, evtl. pdf o. ä.
