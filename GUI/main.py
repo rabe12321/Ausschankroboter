@@ -215,6 +215,10 @@ def show_Page1():
     weizen_unselect()
     glas_unselect()
     bestellung_aufgegeben = False
+    cola_selected = False
+    weizen_selected = False
+    glas_pos_selected = False
+    blinker_lamps.remove(lamp_4)
     GPIO.output(doCola, GPIO.HIGH) # reset GPIO
     GPIO.output(doBier, GPIO.HIGH) # reset GPIO
     page1.update()
