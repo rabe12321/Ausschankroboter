@@ -325,10 +325,6 @@ def bestellen_press():
     time.sleep(0.5)
     GPIO.output(doCola, GPIO.HIGH) # reset GPIO
     GPIO.output(doBier, GPIO.HIGH) # reset GPIO
-    while GPIO.input(diAusschankAktiv):
-        pass
-
-
 
 
 # %% -----------------Popup-Fenster------------------------------------------------------------------------------------#
