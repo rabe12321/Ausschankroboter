@@ -174,30 +174,12 @@ def handle_gpio():
     GPIO.output(do3, GPIO.HIGH)
     GPIO.output(do4, GPIO.HIGH)
 
-
-
-    while 1:
-        time.sleep(0.2)
-        if GPIO.input(diLichtschranke):
-            lamp_5.set()
-        else:
-            lamp_5.reset()
-
-        print("di1:   " + str(GPIO.input(di1)))
-        print("di2:   " + str(GPIO.input(di2)))
-        print("di3:   " + str(GPIO.input(di3)))
-        print("di4:   " + str(GPIO.input(diLichtschranke)))
-        print("-----------------------------------------------------------")
-        # OUT
-        # cola_selected
-        # weizen_selected
-        # ...
-        # IN
-        # lichtschranke
-        # ausschank läuft
-        # ausschank fertig
-        # ...
-        # TODO write outputs to and read inputs from Raspberry Pi
+    GPIO.add_event_detect(
+        diAusschankAktiv,
+        GPIO.FALIING,
+        callback = callback_Ausschank_fertig(),
+        bouncetime = 100
+    )
 
 
 def show_frame(frame):
@@ -332,8 +314,10 @@ def bestellen_press():
     time.sleep(0.5)
     GPIO.output(doCola, GPIO.HIGH) # reset GPIO
     GPIO.output(doBier, GPIO.HIGH) # reset GPIO
-    while(True):
-        pass
+
+
+def callback_Ausschank_fertig():
+    open_popupFertig()
 
 
 # %% -----------------Popup-Fenster------------------------------------------------------------------------------------#
