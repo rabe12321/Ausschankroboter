@@ -352,6 +352,8 @@ entwicklerMenu.add_command(label="Page1",
                            command=lambda: show_Page1())
 entwicklerMenu.add_command(label="Page2",
                            command=lambda: show_frame(page1))
+entwicklerMenu.add_command(label="PopupFertig",
+                           command=lambda: open_popupFertig())
 
 helpmenu = tk.Menu(menu)
 menu.add_cascade(label="Help", menu=helpmenu)
