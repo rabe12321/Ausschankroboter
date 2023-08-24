@@ -522,4 +522,8 @@ thread_gpio = Thread(target=handle_gpio)
 thread_gpio.setDaemon(True)
 thread_gpio.start()
 
-root.mainloop()
+thread_gui = Thread(target=root.mainloop())
+thread_gui.setDaemon(True)
+thread_gui.start()
+
+#root.mainloop()
