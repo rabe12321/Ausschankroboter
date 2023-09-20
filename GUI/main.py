@@ -174,6 +174,8 @@ def handle_gpio():
     GPIO.output(do3, GPIO.HIGH)
     GPIO.output(do4, GPIO.HIGH)
 
+    thread_inputs.start()
+
 
 def handle_input_signals():
     while True:
@@ -512,7 +514,7 @@ thread_gpio.start()
 
 thread_inputs = Thread(target=handle_input_signals)
 thread_inputs.setDaemon(True)
-thread_inputs.start()
+
 
 """
 thread_gui = Thread(target=root.mainloop())
