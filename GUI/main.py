@@ -187,7 +187,7 @@ def handle_input_signals():
         if GPIO.IN(diLichtschranke):
             lamp_5.set()
         else:
-            lamp5_.reset()
+            lamp_5.reset()
 
 def show_frame(frame):
     frame.update()
