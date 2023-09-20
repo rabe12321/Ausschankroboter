@@ -177,7 +177,7 @@ def handle_gpio():
 
 def handle_input_signals():
     while True:
-        if GPIO.IN(diLichtschranke):
+        if GPIO.input(diLichtschranke) == GPIO.HIGH:
             lamp_5.set()
         else:
             lamp_5.reset()
