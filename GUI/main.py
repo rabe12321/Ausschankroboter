@@ -182,12 +182,19 @@ def handle_gpio():
     )
 
 
+def handle_input_signals():
+    while True:
+        if GPIO.IN(diLichtschranke):
+            lamp_5.set()
+        else:
+            lamp5_.reset()
+
 def show_frame(frame):
     frame.update()
     frame.tkraise()
 
 
-def show_Page1():
+def reset_to_start():
     global cola_selected
     global weizen_selected
     global glas_pos_selected
@@ -349,9 +356,9 @@ root.config(menu=menu)
 entwicklerMenu = tk.Menu(menu)
 menu.add_cascade(label="Go to", menu=entwicklerMenu)
 entwicklerMenu.add_command(label="Page1",
-                           command=lambda: show_Page1())
+                           command=lambda: reset_to_start())
 entwicklerMenu.add_command(label="Page2",
-                           command=lambda: show_frame(page1))
+                           command=lambda: show_frame(page2))
 entwicklerMenu.add_command(label="PopupFertig",
                            command=lambda: open_popupFertig())
 
@@ -509,6 +516,11 @@ thread_blinker.start()
 thread_gpio = Thread(target=handle_gpio)
 thread_gpio.setDaemon(True)
 thread_gpio.start()
+
+thread_inputs = Thread(target=handle_input_signals())
+thread_inputs.setDaemon(True)
+thread_inputs.start()
+
 
 thread_gui = Thread(target=root.mainloop())
 thread_gui.setDaemon(True)
