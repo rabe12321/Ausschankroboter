@@ -182,6 +182,11 @@ def handle_gpio():
 
 """
 
+def handle_inputs():
+    while True:
+        time.sleep(2)
+        print('ich bin der INput Handler')
+
 def show_frame(frame):
     frame.update()
     frame.tkraise()
@@ -510,9 +515,8 @@ thread_gpio = Thread(target=handle_gpio)
 thread_gpio.setDaemon(True)
 thread_gpio.start()
 
-"""
-thread_gui = Thread(target=root.mainloop())
-thread_gui.setDaemon(False)
-thread_gui.start()
-"""
+thread_inputs = Thread(target=handle_inputs)
+thread_inputs.setDaemon(True)
+thread_inputs.start()
+
 root.mainloop()
