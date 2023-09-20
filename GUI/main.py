@@ -174,13 +174,6 @@ def handle_gpio():
     GPIO.output(do3, GPIO.HIGH)
     GPIO.output(do4, GPIO.HIGH)
 
-    GPIO.add_event_detect(
-        diAusschankAktiv,
-        GPIO.FALIING,
-        callback = callback_Ausschank_fertig(),
-        bouncetime = 100
-    )
-
 
 def handle_input_signals():
     while True:
@@ -517,7 +510,7 @@ thread_gpio = Thread(target=handle_gpio)
 thread_gpio.setDaemon(True)
 thread_gpio.start()
 
-thread_inputs = Thread(target=handle_input_signals())
+thread_inputs = Thread(target=handle_input_signals)
 thread_inputs.setDaemon(True)
 thread_inputs.start()
 
