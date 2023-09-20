@@ -180,7 +180,7 @@ def handle_inputs():
             lamp_5.set()
         else:
             lamp_5.reset()
-        #time.sleep(2)
+        time.sleep(0.1)
         #print('ich bin der INput Handler')
 
 def show_frame(frame):
