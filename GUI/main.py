@@ -184,6 +184,10 @@ def handle_gpio():
 
 def handle_inputs():
     while True:
+        if GPIO.input(diLichtschranke) == GPIO.HIGH:
+            lamp_5.set()
+        else:
+            lamp_5.reset()
         time.sleep(2)
         print('ich bin der INput Handler')
 
