@@ -173,14 +173,14 @@ def handle_gpio():
     GPIO.output(doCola, GPIO.HIGH)
     GPIO.output(do3, GPIO.HIGH)
     GPIO.output(do4, GPIO.HIGH)
-
+"""
     while True:
         if GPIO.input(diLichtschranke) == GPIO.HIGH:
             lamp_5.set()
         else:
             lamp_5.reset()
 
-
+"""
 
 def show_frame(frame):
     frame.update()
@@ -510,9 +510,9 @@ thread_gpio = Thread(target=handle_gpio)
 thread_gpio.setDaemon(True)
 thread_gpio.start()
 
-
+"""
 thread_gui = Thread(target=root.mainloop())
 thread_gui.setDaemon(False)
 thread_gui.start()
-
-#root.mainloop()
+"""
+root.mainloop()
