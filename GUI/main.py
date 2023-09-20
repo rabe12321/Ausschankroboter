@@ -182,9 +182,9 @@ def handle_inputs():
             lamp_licht_offen.reset()
 
         if GPIO.input(diAusschankAktiv) == GPIO.HIGH and bestellung_aufgegeben:
-            lamp_ausschank_aktiv.set()
+            blinker_lamps.append(lamp_ausschank_aktiv)
         else:
-            lamp_ausschank_aktiv.reset()
+            blinker_lamps.remove(lamp_ausschank_aktiv)
 
         time.sleep(0.1)
         #print('ich bin der INput Handler')
@@ -317,7 +317,6 @@ def bestellen_press():
     lamp_getr_gew.set()
     lamp_glas_pos_done.set()
     lamp_getr_bestellt.set()
-    blinker_lamps.append(lamp_ausschank_aktiv)
     time.sleep(0.5)
     GPIO.output(doCola, GPIO.HIGH) # reset GPIO
     GPIO.output(doBier, GPIO.HIGH) # reset GPIO
