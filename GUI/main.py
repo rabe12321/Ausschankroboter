@@ -511,10 +511,8 @@ thread_gpio.setDaemon(True)
 thread_gpio.start()
 
 
-
-"""
 thread_gui = Thread(target=root.mainloop())
-thread_gui.setDaemon(True)
+thread_gui.setDaemon(False)
 thread_gui.start()
-"""
-root.mainloop()
+
+#root.mainloop()
