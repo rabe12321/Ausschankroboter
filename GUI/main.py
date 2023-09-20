@@ -169,12 +169,14 @@ def handle_gpio():
     GPIO.setup(diAusschankAktiv, GPIO.IN)
     GPIO.setup(diLichtschranke, GPIO.IN)
 
-    GPIO.output(doBier, GPIO.LOW)
-    GPIO.output(doCola, GPIO.LOW)
-    GPIO.output(do3, GPIO.LOW)
-    GPIO.output(do4, GPIO.LOW)
+    GPIO.output(doBier, GPIO.HIGH)
+    GPIO.output(doCola, GPIO.HIGH)
+    GPIO.output(do3, GPIO.HIGH)
+    GPIO.output(do4, GPIO.HIGH)
 
 def handle_inputs():
+    flag_ausschank = False
+
     while True:
         if GPIO.input(diLichtschranke) == GPIO.HIGH:
             lamp_licht_offen.set()
@@ -185,10 +187,12 @@ def handle_inputs():
 
         if GPIO.input(diAusschankAktiv) == GPIO.HIGH and bestellung_aufgegeben:
             blinker_lamps.append(lamp_ausschank_aktiv)
+            flag_ausschank = True
             print('ausschank aktiv')
-        else:
+        elif flag_ausschank:
             blinker_lamps.remove(lamp_ausschank_aktiv)
             print('ausschank inaktiv')
+            flag_ausschank = False
 
         time.sleep(0.3)
         #print('ich bin der INput Handler')
@@ -314,16 +318,16 @@ def bestellen_press():
         selectbox_glas.click()
     if checkbox_cola.get_selected():
         checkbox_cola.click()
-        GPIO.output(doCola, GPIO.HIGH) # set GPIO
+        GPIO.output(doCola, GPIO.LOW) # set GPIO
     if checkbox_weizen.get_selected():
         checkbox_weizen.click()
-        GPIO.output(doBier, GPIO.HIGH) # set GPIO
+        GPIO.output(doBier, GPIO.LOW) # set GPIO
     lamp_getr_gew.set()
     lamp_glas_pos_done.set()
     lamp_getr_bestellt.set()
     time.sleep(0.5)
-    GPIO.output(doCola, GPIO.LOW) # reset GPIO
-    GPIO.output(doBier, GPIO.LOW) # reset GPIO
+    GPIO.output(doCola, GPIO.HIGH) # reset GPIO
+    GPIO.output(doBier, GPIO.HIGH) # reset GPIO
 
 
 def callback_Ausschank_fertig():
