@@ -221,7 +221,7 @@ def showAboutText():
 
 
 def closeWindow():
-    os.system('cls')
+    os.system('clear')
     print('Programm wird nun beendet.\n'
           'Dieses Fenster schließt sich nach erfolgreichem Beenden'
           ' automatisch.\nDas kann einen Moment dauern...')
