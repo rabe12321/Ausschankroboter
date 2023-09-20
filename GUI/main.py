@@ -226,7 +226,7 @@ def closeWindow():
           'Dieses Fenster schließt sich nach erfolgreichem Beenden'
           ' automatisch.\nDas kann einen Moment dauern...')
     root.destroy()
-    GPIO.cleanpu() # GPIO-Instanzen aufräumen
+    GPIO.cleanup() # GPIO-Instanzen aufräumen
 
 
 def disable_event():
