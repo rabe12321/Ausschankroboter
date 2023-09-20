@@ -194,7 +194,7 @@ def handle_inputs():
             blinker_lamps.append(lamp_ausschank_aktiv)
             flag_ausschank = True
             print('ausschank aktiv')
-        elif flag_ausschank: # Ausschank beendet
+        if GPIO.input(diAusschankAktiv) == GPIO.HIGH and flag_ausschank: # Ausschank beendet
             blinker_lamps.remove(lamp_ausschank_aktiv)
             print('ausschank inaktiv')
             flag_ausschank = False
