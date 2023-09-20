@@ -241,6 +241,10 @@ def closeWindow():
           'Dieses Fenster schließt sich nach erfolgreichem Beenden'
           ' automatisch.\nDas kann einen Moment dauern...')
     root.destroy()
+    GPIO.output(doBier, GPIO.HIGH)
+    GPIO.output(doCola, GPIO.HIGH)
+    GPIO.output(do3, GPIO.HIGH)
+    GPIO.output(do4, GPIO.HIGH)
     GPIO.cleanup() # GPIO-Instanzen aufräumen
 
 
