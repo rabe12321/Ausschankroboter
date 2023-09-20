@@ -177,9 +177,15 @@ def handle_gpio():
 def handle_inputs():
     while True:
         if GPIO.input(diLichtschranke) == GPIO.HIGH:
-            lamp_5.set()
+            lamp_licht_offen.set()
         else:
-            lamp_5.reset()
+            lamp_licht_offen.reset()
+
+        if GPIO.input(diAusschankAktiv) == GPIO.HIGH and bestellung_aufgegeben:
+            lamp_ausschank_aktiv.set()
+        else:
+            lamp_ausschank_aktiv.reset()
+
         time.sleep(0.1)
         #print('ich bin der INput Handler')
 
@@ -198,9 +204,9 @@ def reset_to_start():
     weizen_unselect()
     glas_unselect()
     bestellung_aufgegeben = False
-    blinker_lamps.remove(lamp_4)
-    lamp_4.reset()
-    lamp_3.reset()
+    blinker_lamps.remove(lamp_ausschank_aktiv)
+    lamp_ausschank_aktiv.reset()
+    lamp_getr_bestellt.reset()
     GPIO.output(doCola, GPIO.HIGH) # reset GPIO
     GPIO.output(doBier, GPIO.HIGH) # reset GPIO
     show_frame(labelCola)
@@ -248,13 +254,13 @@ def cola_select():
     if checkbox_weizen.get_selected():
         checkbox_weizen.click()
     show_frame(glasPosBoxFrame)
-    lamp_1.set()
+    lamp_getr_gew.set()
 
 
 def cola_unselect():
     global cola_selected
     cola_selected = False
-    lamp_1.reset()
+    lamp_getr_gew.reset()
     show_frame(glasPosBoxHideFrame)
     if selectbox_glas.get_selected():
         selectbox_glas.click()
@@ -266,13 +272,13 @@ def weizen_select():
     if checkbox_cola.get_selected():
         checkbox_cola.click()
     show_frame(glasPosBoxFrame)
-    lamp_1.set()
+    lamp_getr_gew.set()
 
 
 def weizen_unselect():
     global weizen_selected
     weizen_selected = False
-    lamp_1.reset()
+    lamp_getr_gew.reset()
     show_frame(glasPosBoxHideFrame)
     if selectbox_glas.get_selected():
         selectbox_glas.click()
@@ -282,7 +288,7 @@ def glas_select():
     global glas_pos_selected
     glas_pos_selected = True
     show_frame(button_bestellen)
-    lamp_2.set()
+    lamp_glas_pos_done.set()
 
 
 def glas_unselect():
@@ -290,7 +296,7 @@ def glas_unselect():
     glas_pos_selected = False
     print(glas_pos_selected)
     show_frame(button_bestellen_hide)
-    lamp_2.reset()
+    lamp_glas_pos_done.reset()
 
 
 def bestellen_press():
@@ -308,10 +314,10 @@ def bestellen_press():
     if checkbox_weizen.get_selected():
         checkbox_weizen.click()
         GPIO.output(doBier, GPIO.LOW) # set GPIO
-    lamp_1.set()
-    lamp_2.set()
-    lamp_3.set()
-    blinker_lamps.append(lamp_4)
+    lamp_getr_gew.set()
+    lamp_glas_pos_done.set()
+    lamp_getr_bestellt.set()
+    blinker_lamps.append(lamp_ausschank_aktiv)
     time.sleep(0.5)
     GPIO.output(doCola, GPIO.HIGH) # reset GPIO
     GPIO.output(doBier, GPIO.HIGH) # reset GPIO
@@ -470,33 +476,33 @@ statusFrame.place(x=1300, y=240)
 
 label_1 = ttk.Label(statusFrame, style="invisible_label.TLabel", text="Getränk ausgewählt", font=("Arial", 30))
 label_1.place(anchor="e", x=430, y=70)
-lamp_1 = gui.SignalLamp(statusFrame, 100, 100, "invisible_label.TLabel")
-lamp_1.place(anchor="w", x=460, y=70)
-lamp_1.config_green()
+lamp_getr_gew = gui.SignalLamp(statusFrame, 100, 100, "invisible_label.TLabel")
+lamp_getr_gew.place(anchor="w", x=460, y=70)
+lamp_getr_gew.config_green()
 
 label_2 = ttk.Label(statusFrame, style="invisible_label.TLabel", text="Glas positioniert", font=("Arial", 30))
 label_2.place(anchor="e", x=430, y=200)
-lamp_2 = gui.SignalLamp(statusFrame, 100, 100, "invisible_label.TLabel")
-lamp_2.place(anchor="w", x=460, y=200)
-lamp_2.config_green()
+lamp_glas_pos_done = gui.SignalLamp(statusFrame, 100, 100, "invisible_label.TLabel")
+lamp_glas_pos_done.place(anchor="w", x=460, y=200)
+lamp_glas_pos_done.config_green()
 
 label_3 = ttk.Label(statusFrame, style="invisible_label.TLabel", text="Getränk bestellt", font=("Arial", 30))
 label_3.place(anchor="e", x=430, y=330)
-lamp_3 = gui.SignalLamp(statusFrame, 100, 100, "invisible_label.TLabel")
-lamp_3.place(anchor="w", x=460, y=330)
-lamp_3.config_green()
+lamp_getr_bestellt = gui.SignalLamp(statusFrame, 100, 100, "invisible_label.TLabel")
+lamp_getr_bestellt.place(anchor="w", x=460, y=330)
+lamp_getr_bestellt.config_green()
 
 label_4 = ttk.Label(statusFrame, style="invisible_label.TLabel", text="Ausschank läuft", font=("Arial", 30))
 label_4.place(anchor="e", x=430, y=460)
-lamp_4 = gui.SignalLamp(statusFrame, 100, 100, "invisible_label.TLabel")
-lamp_4.place(anchor="w", x=460, y=460)
-lamp_4.config_yellow()
+lamp_ausschank_aktiv = gui.SignalLamp(statusFrame, 100, 100, "invisible_label.TLabel")
+lamp_ausschank_aktiv.place(anchor="w", x=460, y=460)
+lamp_ausschank_aktiv.config_yellow()
 
 label_5 = ttk.Label(statusFrame, style="invisible_label.TLabel", text="Lichtschranke offen", font=("Arial", 30))
 label_5.place(anchor="e", x=430, y=590)
-lamp_5 = gui.SignalLamp(statusFrame, 100, 100, "invisible_label.TLabel")
-lamp_5.place(anchor="w", x=460, y=590)
-lamp_5.config_red()
+lamp_licht_offen = gui.SignalLamp(statusFrame, 100, 100, "invisible_label.TLabel")
+lamp_licht_offen.place(anchor="w", x=460, y=590)
+lamp_licht_offen.config_red()
 
 lamp_6 = gui.SignalLamp(statusFrame, 100, 100, "invisible_label.TLabel")
 lamp_6.place(anchor="w", x=460, y=720)
