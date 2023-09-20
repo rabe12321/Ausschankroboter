@@ -514,9 +514,9 @@ thread_inputs = Thread(target=handle_input_signals)
 thread_inputs.setDaemon(True)
 thread_inputs.start()
 
-
+"""
 thread_gui = Thread(target=root.mainloop())
 thread_gui.setDaemon(True)
 thread_gui.start()
-
-#root.mainloop()
+"""
+root.mainloop()
