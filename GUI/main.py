@@ -173,14 +173,6 @@ def handle_gpio():
     GPIO.output(doCola, GPIO.HIGH)
     GPIO.output(do3, GPIO.HIGH)
     GPIO.output(do4, GPIO.HIGH)
-"""
-    while True:
-        if GPIO.input(diLichtschranke) == GPIO.HIGH:
-            lamp_5.set()
-        else:
-            lamp_5.reset()
-
-"""
 
 def handle_inputs():
     while True:
@@ -188,8 +180,6 @@ def handle_inputs():
             lamp_5.set()
         else:
             lamp_5.reset()
-        time.sleep(2)
-        print('ich bin der INput Handler')
 
 def show_frame(frame):
     frame.update()
