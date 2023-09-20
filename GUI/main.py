@@ -180,6 +180,8 @@ def handle_inputs():
             lamp_5.set()
         else:
             lamp_5.reset()
+        time.sleep(2)
+        print('ich bin der INput Handler')
 
 def show_frame(frame):
     frame.update()
@@ -220,7 +222,7 @@ def showAboutText():
 
 
 def closeWindow():
-    os.system('clear')
+    #os.system('clear')
     print('Programm wird nun beendet.\n'
           'Dieses Fenster schließt sich nach erfolgreichem Beenden'
           ' automatisch.\nDas kann einen Moment dauern...')
