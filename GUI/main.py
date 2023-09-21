@@ -455,12 +455,7 @@ labelStart.place(relx=0.5,
 labelStart.bind("<ButtonPress>", show_labelStart_press)
 labelStart.bind("<ButtonRelease>", show_labelStart_release)
 
-buttonStart = ttk.Button(page1,
-                         image=buttonStartFoto,
-                         text="Start",
-                         compound='center',
-                         style="buttonStart.TButton",
-                         command=lambda: show_frame(page2))
+buttonStart = gui_elements.StartButton(page1, 160, 160, "invisible_label.TLabel", None, show_frame(page2))
 buttonStart.place(relx=0.5,
                   y=850,
                   anchor='center')
