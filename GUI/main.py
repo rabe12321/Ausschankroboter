@@ -199,7 +199,8 @@ def handle_inputs():
             lamp_ausschank_fertig.set()
             flag_ausschank = False
             bestellung_aufgegeben = False
-            messagebox.showinfo('Ausschank fertig',
+            lamp_ausschank_aktiv.reset()
+            messagebox.showinfo('Fertig',
                                 'Ausschankvorgang beendet. Bitte volles Glas entnehmen und OK drücken.')
             reset_to_start()
 
