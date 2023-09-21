@@ -262,7 +262,8 @@ def helpPage():  # TODO Help-Page bauen, evtl. pdf o. ä.
 
 def showAboutText():
     messagebox.showinfo('About',
-                        'Bei weiteren Fragen wenden Sie sich an Prof. Dr. A. Buschhaus.')  # TODO About-Text schreiben
+                        'Diese Roboterzelle wurde im Rahmen von Abschluss- und Projektarbeiten entwickelt. '
+                        'Bei weiteren Fragen wenden Sie sich an Prof. Dr. Arnd Buschhaus.')
 
 
 
