@@ -249,6 +249,7 @@ def reset_to_start():
     bestellung_aufgegeben = False
     if flag_ausschank:
         blinker_lamps.remove(lamp_ausschank_aktiv)
+        flag_ausschank = False
     lamp_ausschank_aktiv.reset()
     lamp_getr_bestellt.reset()
     lamp_ausschank_fertig.reset()
