@@ -212,6 +212,11 @@ def show_frame(frame):
     frame.tkraise()
 
 
+def show_page2():
+    page2.update()
+    page2.tkraise()
+
+
 def reset_to_start():
     global cola_selected
     global weizen_selected
@@ -444,7 +449,7 @@ Willkommen_label.place(x=0,
                        height=300)
 
 
-buttonStart = gui_elements.StartButton(page1, 160, 160, "invisible_label.TLabel", None, show_frame(page2))
+buttonStart = gui_elements.StartButton(page1, 200, 200, "invisible_label.TLabel", None, show_page2)
 buttonStart.place(relx=0.5,
                   y=850,
                   anchor='center')
