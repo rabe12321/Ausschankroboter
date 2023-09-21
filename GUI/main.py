@@ -202,6 +202,7 @@ def handle_inputs():
             print('ausschank inaktiv')
             flag_ausschank = False
             bestellung_aufgegeben = False
+            reset_to_start()
 
         time.sleep(0.3)
 
