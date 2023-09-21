@@ -442,7 +442,7 @@ Willkommen_label.place(x=0,
                        height=300)
 
 
-buttonStart = gui_elements.StartButton(page1, 395, 250, "invisible_label.TLabel", None, show_page2)
+buttonStart = gui_elements.StartButton(page1, 790, 1000, "invisible_label.TLabel", None, show_page2)
 buttonStart.place(relx=0.67,
                   y=350,
                   anchor='center')
