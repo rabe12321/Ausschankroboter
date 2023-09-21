@@ -46,15 +46,21 @@ buttonStartFoto = ImageTk.PhotoImage(buttonStart)
 buttonStartPress = Image.open(FILEPATH + "Buttonstart_ausgefuellt.png")
 buttonStartPressFoto = ImageTk.PhotoImage(buttonStartPress)
 
-weizen = Image.open(FILEPATH + "weizenFrame.png")  # TODO copyright?!
+weizen = Image.open(FILEPATH + "weizenFrame.png")
 weizenFoto = ImageTk.PhotoImage(weizen)
-weizenHide = Image.open(FILEPATH + "weizenHideFrame.png")  # TODO copyright?!
+weizenHide = Image.open(FILEPATH + "weizenHideFrame.png")
 weizenHideFoto = ImageTk.PhotoImage(weizenHide)
 
-cola = Image.open(FILEPATH + "colaFrame.png")  # TODO copyright?!
+cola = Image.open(FILEPATH + "colaFrame.png")
 colaFoto = ImageTk.PhotoImage(cola)
-colaHide = Image.open(FILEPATH + "colaHideFrame.png")  # TODO copyright?!
+colaHide = Image.open(FILEPATH + "colaHideFrame.png")
 colaHideFoto = ImageTk.PhotoImage(colaHide)
+
+colaGlas = Image.open(FILEPATH + "colaGlas.png")
+colaGlasFoto = ImageTk.PhotoImage(colaGlas)
+
+bierGlas = Image.open(FILEPATH + "bierGlas.png")
+bierGlasFoto = ImageTk.PhotoImage(bierGlas)
 
 rectTop = Image.open(FILEPATH + "rectTop.png")
 rectTopFoto = ImageTk.PhotoImage(rectTop)
@@ -287,6 +293,7 @@ def cola_select():
     if checkbox_weizen.get_selected():
         checkbox_weizen.click()
     show_frame(glasPosBoxFrame)
+    show_frame(colaGlasFrame)
     lamp_getr_gew.set()
 
 
@@ -468,6 +475,10 @@ checkbox_cola.place(x=107, y=670)
 
 glasPosBoxFrame = ttk.Label(page2, image=glasPosBoxFoto, style="invisible_label.TLabel")
 glasPosBoxFrame.place(x=680, y=240)
+
+colaGlasFrame = ttk.Label(glasPosBoxFrame, image=colaGlasFoto, style="invisible_label.TLabel")
+colaGlasFrame.place(x=50, y=50)
+
 glasPosBoxHideFrame = ttk.Label(page2, image=glasPosBoxHideFoto, style="invisible_label.TLabel")
 glasPosBoxHideFrame.place(x=680, y=240)
 
