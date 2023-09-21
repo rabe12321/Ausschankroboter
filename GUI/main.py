@@ -199,7 +199,8 @@ def handle_inputs():
             lamp_ausschank_fertig.set()
             flag_ausschank = False
             bestellung_aufgegeben = False
-            open_popupFertig()
+            messagebox.showinfo('Ausschank fertig',
+                                'Ausschankvorgang beendet. Bitte volles Glas entnehmen und OK drücken.')
             #reset_to_start()
 
         time.sleep(0.3)
@@ -256,6 +257,7 @@ def helpPage():  # TODO Help-Page bauen, evtl. pdf o. ä.
 def showAboutText():
     messagebox.showinfo('About',
                         'Bei weiteren Fragen wenden Sie sich an Prof. Dr. A. Buschhaus.')  # TODO About-Text schreiben
+
 
 
 def closeWindow():
@@ -396,6 +398,8 @@ entwicklerMenu.add_command(label="Page1",
                            command=lambda: reset_to_start())
 entwicklerMenu.add_command(label="Page2",
                            command=lambda: show_frame(page2))
+entwicklerMenu.add_command(label="Popup",
+                           command=lambda: open_popupFertig())
 
 helpmenu = tk.Menu(menu)
 menu.add_cascade(label="Help", menu=helpmenu)
