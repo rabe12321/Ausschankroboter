@@ -478,9 +478,9 @@ glasPosBoxFrame = ttk.Label(page2, image=glasPosBoxFoto, style="invisible_label.
 glasPosBoxFrame.place(x=680, y=240)
 
 colaGlasFrame = ttk.Label(glasPosBoxFrame, image=colaGlasFoto, style="invisible_label.TLabel")
-colaGlasFrame.place(x=100, y=100)
+colaGlasFrame.place(x=90, y=90)
 bierGlasFrame = ttk.Label(glasPosBoxFrame, image=bierGlasFoto, style="invisible_label.TLabel")
-bierGlasFrame.place(x=150, y=150)
+bierGlasFrame.place(x=90, y=90)
 
 glasPosBoxHideFrame = ttk.Label(page2, image=glasPosBoxHideFoto, style="invisible_label.TLabel")
 glasPosBoxHideFrame.place(x=680, y=240)
