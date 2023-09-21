@@ -202,6 +202,7 @@ def handle_inputs():
             flag_ausschank = False
             bestellung_aufgegeben = False
 
+        print(blinker_lamps)
         time.sleep(0.3)
 
 
