@@ -436,14 +436,14 @@ Willkommen_label = ttk.Label(page1,
                              anchor='center',
                              background=col_Grey,
                              foreground='white')
-Willkommen_label.place(x=-400,
+Willkommen_label.place(x=-420,
                        y=390,
                        width=1920,
                        height=300)
 
 
 buttonStart = gui_elements.StartButton(page1, 800, 630, "invisible_label.TLabel", None, show_page2)
-buttonStart.place(relx=0.7,
+buttonStart.place(relx=0.71,
                   y=600,
                   anchor='center')
 # %% -----------------page2--------------------------------------------------------------------------------------------#
