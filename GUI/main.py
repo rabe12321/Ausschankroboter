@@ -443,17 +443,6 @@ Willkommen_label.place(x=0,
                        width=1920,
                        height=300)
 
-labelStart = ttk.Label(page1,
-                       image=buttonStartFoto,
-                       text="Start",
-                       compound="center",
-                       font=('Segoe UI', 30),
-                       style='labelStart.TLabel')
-labelStart.place(relx=0.5,
-                 y=850,
-                 anchor='center')
-labelStart.bind("<ButtonPress>", show_labelStart_press)
-labelStart.bind("<ButtonRelease>", show_labelStart_release)
 
 buttonStart = gui_elements.StartButton(page1, 160, 160, "invisible_label.TLabel", None, show_frame(page2))
 buttonStart.place(relx=0.5,
