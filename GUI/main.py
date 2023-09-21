@@ -241,8 +241,7 @@ def reset_to_start():
     show_frame(checkbox_cola)
     show_frame(labelWeizen)
     show_frame(checkbox_weizen)
-    page1.update()
-    page1.tkraise()
+    show_frame(page1)
 
 
 def helpPage():  # TODO Help-Page bauen, evtl. pdf o. ä.
