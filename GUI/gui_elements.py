@@ -134,7 +134,6 @@ class BestellenButton(ttk.Label):
         self.__command_press = command_press
         self.__command_release = command_release
 
-
         super(BestellenButton, self).__init__(frame, image=self.__button_foto, style=style)
 
         self.__is_pressed = False
@@ -168,21 +167,21 @@ class BestellenButton(ttk.Label):
         self.__button_pressed = self.__button_pressed.resize((size_x, size_y))
         self.__button_pressed_foto = ImageTk.PhotoImage(self.__button_pressed)
 
-class FertigButton(ttk.Label):
+
+class StartButton(ttk.Label):
     def __init__(self, frame, size_x, size_y, style, command_press, command_release):
-        self.__button = Image.open(FILEPATH + "bestellenButton.png")
+        self.__button = Image.open(FILEPATH + "startButton.png")
         self.__button = self.__button.resize((size_x, size_y))
         self.__button_foto = ImageTk.PhotoImage(self.__button)
 
-        self.__button_pressed = Image.open(FILEPATH + "bestellenButtonPressed.png")
+        self.__button_pressed = Image.open(FILEPATH + "startButtonPressed.png")
         self.__button_pressed = self.__button_pressed.resize((size_x, size_y))
         self.__button_pressed_foto = ImageTk.PhotoImage(self.__button_pressed)
 
         self.__command_press = command_press
         self.__command_release = command_release
 
-
-        super(FertigButton, self).__init__(frame, image=self.__button_foto, style=style)
+        super(StartButton, self).__init__(frame, image=self.__button_foto, style=style)
 
         self.__is_pressed = False
 

@@ -362,10 +362,6 @@ def bestellen_press():
     GPIO.output(doStartAusschankInvert, GPIO.LOW) # reset GPIO
 
 
-def callback_Ausschank_fertig():
-    open_popupFertig()
-
-
 # %% -----------------Popup-Fenster------------------------------------------------------------------------------------#
 def open_popupHelp():
     return
