@@ -444,7 +444,7 @@ Willkommen_label.place(x=0,
 
 buttonStart = gui_elements.StartButton(page1, 800, 630, "invisible_label.TLabel", None, show_page2)
 buttonStart.place(relx=0.67,
-                  y=350,
+                  y=600,
                   anchor='center')
 # %% -----------------page2--------------------------------------------------------------------------------------------#
 labelWeizen = ttk.Label(page2, image=weizenFoto, style="invisible_label.TLabel")
