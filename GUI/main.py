@@ -467,7 +467,6 @@ buttonStart = ttk.Button(page1,
 buttonStart.place(relx=0.5,
                   y=850,
                   anchor='center')
-open_popupFertig()
 # %% -----------------page2--------------------------------------------------------------------------------------------#
 labelWeizen = ttk.Label(page2, image=weizenFoto, style="invisible_label.TLabel")
 labelWeizen.place(x=30, y=240)
