@@ -218,6 +218,7 @@ def reset_to_start():
     global glas_pos_selected
     global bestellung_aufgegeben
     global blinker_lamps
+    global flag_ausschank
     global lamp_ausschank_aktiv
     global lamp_getr_bestellt
     global doCola
