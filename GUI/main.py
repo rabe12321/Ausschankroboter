@@ -237,10 +237,10 @@ def reset_to_start():
     GPIO.output(doCola, GPIO.HIGH) # reset GPIO
     GPIO.output(doBier, GPIO.HIGH) # reset GPIO
     GPIO.output(doStartAusschankInvert, GPIO.LOW) # reset GPIO
-    show_frame(labelCola)
-    show_frame(checkbox_cola)
-    show_frame(labelWeizen)
-    show_frame(checkbox_weizen)
+    #show_frame(labelCola)
+    #show_frame(checkbox_cola)
+    #show_frame(labelWeizen)
+    #show_frame(checkbox_weizen)
     show_frame(page1)
 
 
@@ -387,8 +387,6 @@ entwicklerMenu.add_command(label="Page1",
                            command=lambda: reset_to_start())
 entwicklerMenu.add_command(label="Page2",
                            command=lambda: show_frame(page2))
-entwicklerMenu.add_command(label="PopupFertig",
-                           command=lambda: open_popupFertig())
 
 helpmenu = tk.Menu(menu)
 menu.add_cascade(label="Help", menu=helpmenu)
