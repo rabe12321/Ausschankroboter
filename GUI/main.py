@@ -201,7 +201,7 @@ def handle_inputs():
             bestellung_aufgegeben = False
             messagebox.showinfo('Ausschank fertig',
                                 'Ausschankvorgang beendet. Bitte volles Glas entnehmen und OK drücken.')
-            #reset_to_start()
+            reset_to_start()
 
         time.sleep(0.3)
 
