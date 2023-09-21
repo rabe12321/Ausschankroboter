@@ -382,7 +382,7 @@ def open_popupFertig():
     popup_fertig.geometry("1000x1000")
     popup_fertig.title("Ausschankvorgang abgeschlossen")
     popup_fertig.pack(anchor="center")
-    fertigButton = gui_elements.FertigButton(popup_fertig,200,200,"invisible_label.TLabel",None,None)
+    fertigButton = gui_elements.FertigButton(popup_fertig,200,200,"invisible_label.TLabel", None, reset_to_start)
     fertigButton.pack(popup_fertig)
 
 
