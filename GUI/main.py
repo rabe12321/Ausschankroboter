@@ -19,6 +19,7 @@ from filepath import *
 # col_Blue = '#%02x%02x%02x' % (1, 105, 196)  # RGB values
 col_Blue = '#%02x%02x%02x' % (18, 123, 202)  # RGB values TEC blue
 col_Grey = '#%02x%02x%02x' % (200, 200, 200)  # RGB values
+col_HSRTGrey = '#%02x%02x%02x' % (102, 102, 102)  # RGB values
 col_GlobalBackground = '#%02x%02x%02x' % (200, 200, 200)  # RGB light grey
 
 # %% -----------------Hauptfenster erstellen---------------------------------------------------------------------------#
@@ -423,6 +424,7 @@ for frame in (page1, page2):
                       text="Ausschankroboter",
                       style="invisible_label.TLabel",
                       font=('Arial', 50),
+                      foreground=col_HSRTGrey,
                       anchor='n')
     label.place(x=590,
                 y=50)
@@ -435,7 +437,7 @@ Willkommen_label = ttk.Label(page1,
                              font=(None, 100),
                              anchor='center',
                              background=col_Grey,
-                             foreground='white')
+                             foreground=col_HSRTGrey)
 Willkommen_label.place(x=-420,
                        y=390,
                        width=1920,
