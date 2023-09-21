@@ -314,6 +314,7 @@ def weizen_select():
     if checkbox_cola.get_selected():
         checkbox_cola.click()
     show_frame(glasPosBoxFrame)
+    show_frame(bierGlasFrame)
     lamp_getr_gew.set()
 
 
@@ -477,7 +478,9 @@ glasPosBoxFrame = ttk.Label(page2, image=glasPosBoxFoto, style="invisible_label.
 glasPosBoxFrame.place(x=680, y=240)
 
 colaGlasFrame = ttk.Label(glasPosBoxFrame, image=colaGlasFoto, style="invisible_label.TLabel")
-colaGlasFrame.place(x=50, y=50)
+colaGlasFrame.place(x=100, y=100)
+bierGlasFrame = ttk.Label(glasPosBoxFrame, image=bierGlasFoto, style="invisible_label.TLabel")
+bierGlasFrame.place(x=150, y=150)
 
 glasPosBoxHideFrame = ttk.Label(page2, image=glasPosBoxHideFoto, style="invisible_label.TLabel")
 glasPosBoxHideFrame.place(x=680, y=240)
