@@ -125,6 +125,7 @@ page1 = ttk.Frame(root)  # Startseite
 page2 = ttk.Frame(root)  # Auswahl Getränk, Bestellung, Status
 
 # %% -----------------Globale Variablen--------------------------------------------------------------------------------#
+flag_ausschank = False
 cola_selected = False
 weizen_selected = False
 glas_pos_selected = False
@@ -180,7 +181,7 @@ def handle_gpio():
 
 
 def handle_inputs():
-    flag_ausschank = False
+    global flag_ausschank
     global bestellung_aufgegeben
     global blinker_lamps
 
@@ -232,7 +233,8 @@ def reset_to_start():
     weizen_unselect()
     glas_unselect()
     bestellung_aufgegeben = False
-    blinker_lamps.remove(lamp_ausschank_aktiv)
+    if flag_ausschank:
+        blinker_lamps.remove(lamp_ausschank_aktiv)
     lamp_ausschank_aktiv.reset()
     lamp_getr_bestellt.reset()
     GPIO.output(doCola, GPIO.HIGH) # reset GPIO
