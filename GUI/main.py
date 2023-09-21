@@ -149,6 +149,7 @@ diLichtschranke = 21
 # %% -----------------Funktionen---------------------------------------------------------------------------------------#
 def blinker():
     global blinker_value
+    global blinker_lamps
     while 1:
         blinker_value = not blinker_value
         for blinker_lamp in blinker_lamps:
@@ -181,6 +182,7 @@ def handle_gpio():
 def handle_inputs():
     flag_ausschank = False
     global bestellung_aufgegeben
+    global blinker_lamps
 
     while True:
         if GPIO.input(diLichtschranke) == GPIO.HIGH:
