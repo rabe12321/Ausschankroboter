@@ -289,6 +289,8 @@ def cola_unselect():
     cola_selected = False
     lamp_getr_gew.reset()
     show_frame(glasPosBoxHideFrame)
+    if checkbox_cola.get_selected():
+        checkbox_cola.click()
     if selectbox_glas.get_selected():
         selectbox_glas.click()
 
@@ -307,6 +309,8 @@ def weizen_unselect():
     weizen_selected = False
     lamp_getr_gew.reset()
     show_frame(glasPosBoxHideFrame)
+    if checkbox_weizen.get_selected():
+        checkbox_weizen.click()
     if selectbox_glas.get_selected():
         selectbox_glas.click()
 
