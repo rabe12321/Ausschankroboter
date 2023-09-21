@@ -215,6 +215,17 @@ def reset_to_start():
     global weizen_selected
     global glas_pos_selected
     global bestellung_aufgegeben
+    global blinker_lamps
+    global lamp_ausschank_aktiv
+    global lamp_getr_bestellt
+    global doCola
+    global doBier
+    global doStartAusschankInvert
+    global labelCola
+    global checkbox_cola
+    global labelWeizen
+    global checkbox_weizen
+    global page1
 
     cola_unselect()
     weizen_unselect()
@@ -311,7 +322,6 @@ def glas_select():
 def glas_unselect():
     global glas_pos_selected
     glas_pos_selected = False
-    print(glas_pos_selected)
     show_frame(button_bestellen_hide)
     lamp_glas_pos_done.reset()
 
