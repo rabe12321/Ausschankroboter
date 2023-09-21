@@ -242,6 +242,10 @@ def reset_to_start():
     GPIO.output(doCola, GPIO.HIGH) # reset GPIO
     GPIO.output(doBier, GPIO.HIGH) # reset GPIO
     GPIO.output(doStartAusschankInvert, GPIO.LOW) # reset GPIO
+    show_frame(labelCola)
+    show_frame(checkbox_cola)
+    show_frame(labelWeizen)
+    show_frame(checkbox_weizen)
     show_frame(page1)
 
 
