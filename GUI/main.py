@@ -187,22 +187,20 @@ def handle_inputs():
     while True:
         if GPIO.input(diLichtschranke) == GPIO.HIGH:
             lamp_licht_offen.set()
-            print('licht offen')
         else:
             lamp_licht_offen.reset()
-            print('licht zu')
 
         if GPIO.input(diAusschankAktiv) == GPIO.LOW and bestellung_aufgegeben: # Ausschank läuft
             blinker_lamps.append(lamp_ausschank_aktiv)
             flag_ausschank = True
-            print('ausschank aktiv')
         if GPIO.input(diAusschankAktiv) == GPIO.HIGH and flag_ausschank: # Ausschank beendet
             blinker_lamps.remove(lamp_ausschank_aktiv)
-            print('ausschank inaktiv')
             flag_ausschank = False
             bestellung_aufgegeben = False
 
-        print(blinker_lamps)
+        print('licht' + diLichtschranke)
+        print('ausschank aktiv' + GPIO.input(diAusschankAktiv) == GPIO.LOW and bestellung_aufgegeben)
+        print('ausschank inaktiv' + GPIO.input(diAusschankAktiv) == GPIO.HIGH and flag_ausschank)
         time.sleep(0.3)
 
 
