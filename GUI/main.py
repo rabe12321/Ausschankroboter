@@ -188,21 +188,19 @@ def handle_inputs():
     while True:
         if GPIO.input(diLichtschranke) == GPIO.HIGH:
             lamp_licht_offen.set()
-            print('licht offen')
         else:
             lamp_licht_offen.reset()
-            print('licht zu')
 
         if GPIO.input(diAusschankAktiv) == GPIO.LOW and bestellung_aufgegeben and not flag_ausschank: # Ausschank läuft
             blinker_lamps.append(lamp_ausschank_aktiv)
             flag_ausschank = True
-            print('ausschank aktiv')
         if GPIO.input(diAusschankAktiv) == GPIO.HIGH and flag_ausschank: # Ausschank beendet
             blinker_lamps.remove(lamp_ausschank_aktiv)
-            print('ausschank inaktiv')
+            lamp_ausschank_fertig.set()
             flag_ausschank = False
             bestellung_aufgegeben = False
-            reset_to_start()
+            open_popupFertig()
+            #reset_to_start()
 
         time.sleep(0.3)
 
@@ -213,7 +211,6 @@ def show_frame(frame):
 
 
 def reset_to_start():
-    print('reset_to_start()')
     global cola_selected
     global weizen_selected
     global glas_pos_selected
@@ -222,6 +219,7 @@ def reset_to_start():
     global flag_ausschank
     global lamp_ausschank_aktiv
     global lamp_getr_bestellt
+    global lamp_ausschank_fertig
     global doCola
     global doBier
     global doStartAusschankInvert
@@ -239,6 +237,7 @@ def reset_to_start():
         blinker_lamps.remove(lamp_ausschank_aktiv)
     lamp_ausschank_aktiv.reset()
     lamp_getr_bestellt.reset()
+    lamp_ausschank_fertig.reset()
     GPIO.output(doCola, GPIO.HIGH) # reset GPIO
     GPIO.output(doBier, GPIO.HIGH) # reset GPIO
     GPIO.output(doStartAusschankInvert, GPIO.LOW) # reset GPIO
@@ -384,6 +383,7 @@ def open_popupFertig():
     popup_fertig.title("Ausschankvorgang abgeschlossen")
     popup_fertig.pack(anchor="center")
     fertigButton = gui_elements.FertigButton(popup_fertig,200,200,"invisible_label.TLabel",None,None)
+    fertigButton.pack(popup_fertig)
 
 
 # %% -----------------Menüband-----------------------------------------------------------------------------------------#
@@ -533,14 +533,16 @@ lamp_ausschank_aktiv.place(anchor="w", x=460, y=460)
 lamp_ausschank_aktiv.config_yellow()
 
 label_5 = ttk.Label(statusFrame, style="invisible_label.TLabel", text="Lichtschranke offen", font=("Arial", 30))
-label_5.place(anchor="e", x=430, y=590)
+label_5.place(anchor="e", x=430, y=720)
 lamp_licht_offen = gui.SignalLamp(statusFrame, 100, 100, "invisible_label.TLabel")
-lamp_licht_offen.place(anchor="w", x=460, y=590)
+lamp_licht_offen.place(anchor="w", x=460, y=720)
 lamp_licht_offen.config_red()
 
-lamp_6 = gui.SignalLamp(statusFrame, 100, 100, "invisible_label.TLabel")
-lamp_6.place(anchor="w", x=460, y=720)
-lamp_6.config_red()
+label_6 = ttk.Label(statusFrame, style="invisible_label.TLabel", text="Ausschank fertig", font=("Arial", 30))
+label_6.place(anchor="e", x=430, y=590)
+lamp_ausschank_fertig = gui.SignalLamp(statusFrame, 100, 100, "invisible_label.TLabel")
+lamp_ausschank_fertig.place(anchor="w", x=460, y=590)
+lamp_ausschank_fertig.config_green()
 
 # %% -----------------start mainloop-----------------------------------------------------------------------------------#
 thread_blinker = Thread(target=blinker)
